@@ -1,0 +1,101 @@
+<div fxLayout='column' fxLayoutGap='40px' fxFill>
+  <div class='heading'>
+    <h1>Gazebo Development</h1>
+    <p></p>
+  </div>
+
+  <mat-tab-group dynamicHeightcolor="accent">
+    <mat-tab label="Timeline">
+      <div fxLayout='column' style="padding: 40px 40px">
+        <div fxLayout="row" fxLayoutAlign="space-around" fxLayoutGap="20px">
+          <mat-form-field fxFlex="1 auto">
+            <mat-select placeholder="Library" [(ngModel)]="selectedLib" (selectionChange)='onLibChange()'>
+              <mat-option *ngFor="let s of series; let i = index" [value]="i">
+                {{s.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="selectedLib !== undefined" fxFlex="1 auto">
+            <mat-select placeholder="Benchmark" [(ngModel)]="selectedBenchmark" (selectionChange)='onSeriesChange()'>
+              <mat-option *ngFor="let b of series[selectedLib].benchmarks" [value]="b">
+                {{b}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="selectedLib === undefined" fxFlex="1 auto">
+            <mat-select placeholder="">
+              <mat-option></mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+    
+        <div *ngIf="multi !== undefined" fxFlex="2 auto">
+          <ngx-charts-line-chart
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [xAxisTickFormatting]="dateTickFormatting"
+              [autoScale]="autoScale"
+              [timeline]="timeline"
+              (select)="onSelect($event)"
+              >
+          </ngx-charts-line-chart>
+        </div>
+      </div>
+    </mat-tab>
+  
+    <mat-tab label="Date">
+      <div fxLayout='column' style="padding: 40px 40px">
+
+        <div fxLayout="row" fxLayoutAlign="space-around" fxLayoutGap="20px">
+          <mat-form-field fxFlex="1 auto">
+            <mat-select placeholder="Library" [(ngModel)]="selectedLib" (selectionChange)='onLibChange()'>
+              <mat-option *ngFor="let s of series; let i = index" [value]="i">
+                {{s.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="selectedLib !== undefined" fxFlex="1 auto">
+            <mat-select placeholder="Date" [(ngModel)]="selectedDate" (selectionChange)='onDateChange()'>
+              <mat-option *ngFor="let d of dates" [value]="d">
+                {{d}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="selectedLib === undefined" fxFlex="1 auto">
+            <mat-select placeholder="">
+              <mat-option></mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+ 
+        <mat-table [dataSource]="benchmarkTableData">
+          <ng-container matColumnDef="Name">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let entry">{{entry.name}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="CPU Time">
+            <mat-header-cell *matHeaderCellDef>CPU Time</mat-header-cell>
+            <mat-cell *matCellDef="let entry">{{entry.cpu_time}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Real Time">
+            <mat-header-cell *matHeaderCellDef>Real Time</mat-header-cell>
+            <mat-cell *matCellDef="let entry">{{entry.real_time}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="benchmarkTableColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: benchmarkTableColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

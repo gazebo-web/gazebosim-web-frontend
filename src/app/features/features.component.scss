@@ -1,0 +1,99 @@
+@import '~@angular/material/theming';
+@import '../../styles/styles.scss';
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+  border-bottom: 1px solid rgb(219, 219, 219);
+}
+.section:last-of-type {
+  border-bottom: 1px solid rgba(219, 219, 219, 0);
+}
+
+.section h1 {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 24px;
+  color: mat-color($custom-theme-primary, 400);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section.first h1 {
+  font-weight: 300;
+}
+
+.section p {
+  font-size: 18px;
+  color: rgb(62, 62, 62);
+  width: 80%;
+  margin: 20px;
+}
+
+.section.lightgrey {
+  background-color: #efefef;
+}
+
+.section.darkblue {
+  background-color:#78909c;
+}
+.section.darkblue h1,
+.section.darkblue p {
+  color: #fefefe;
+}
+
+.card-row {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+}
+
+.card {
+  padding: 10px;
+  width: 300px;
+  margin: 0px 0px;
+  color: rgb(60, 60, 60);
+}
+.card-header {
+  font-size: 20px;
+  line-height: 1em;
+  font-weight: 400;
+  text-align: left;
+  color: #000000;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.card-description {
+  color: #000000;
+  font-size: 14px;
+  width: 100%;
+  text-align: left;
+}
+.card-action {
+  width: 50%;
+  border-radius: 2px;
+  color: black;
+}
+
+.card-action.last {
+  width: 80%;
+  border-radius: 2px;
+  color: black;
+  background-color: #000;
+}
+
+@media screen and (max-width: 960px) {
+  .card-row {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .card-row {
+    flex-wrap: no-wrap;
+  }
+}

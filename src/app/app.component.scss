@@ -1,0 +1,90 @@
+@import '~@angular/material/theming';
+@import '../styles/custom-theme.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mat-toolbar {
+  display: flex;
+  flex-direction: row;
+  color: #6e6e6e;
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-size: 16px;
+  height: 64px;
+  min-height: 64px;
+  z-index: 1;
+}
+
+.mat-stroked-button {
+  border: 1px solid red;
+}
+
+.mat-toolbar .spacing {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar a {
+  font-weight: normal;
+  color: rgb(110, 110, 110);
+}
+
+.mat-toolbar a:hover {
+  font-weight: normal;
+  color: mat-color($custom-theme-primary, 600);
+}
+
+.mat-toolbar a {
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+
+.mat-toolbar a:hover {
+
+}
+
+.mat-toolbar .moreButton  {
+  cursor: pointer;
+}
+
+.page-content {
+}
+
+.stroked-button {
+  border: 1px solid rgba(180, 180, 180, 1)!important;
+  border-radius: 2px;
+  padding: 0px 10px;
+}
+
+.stroked-button:hover {
+  background-color: rgba(240, 240, 240, 1);
+}
+
+.stroked-button-menu {
+  border-top: 1px solid rgba(180, 180, 180, 1)!important;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(91, 92, 96);
+  color: rgb(238, 238, 238);
+  width: 100%;
+  padding: 80px 0px;
+}
+
+.active {
+  border-bottom: 1px solid mat-color($custom-theme-accent, 600)!important;
+}
+
+.title {
+  font-weight: 300;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+}

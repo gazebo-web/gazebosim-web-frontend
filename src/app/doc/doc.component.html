@@ -1,0 +1,54 @@
+<div fxLayout='column' fxLayoutGap='40px'>
+  <div class='heading'>
+    <h1>Gazebo Documentation</h1>
+    <p></p>
+  </div>
+
+  <div class='card-container'>
+    <div *ngFor="let doc of docsInfo.pages['all'] | gzListedFilter:{unlisted: false}" class="docs-card">
+      <a [routerLink]="['/docs/all/', doc.name]">
+        <section>{{doc.title | titlecase}}</section>
+        <p>{{doc.description}}</p>
+        <p class='card-footer'>
+          <a [routerLink]="['/docs/all/', doc.name]">Learn More</a>
+        </p>
+      </a>
+    </div>
+  </div>
+
+
+  <div fxLayout="row" fxLayoutAlign='space-between' fxLayoutGap="40px" fxFill>
+    <div fxFlex="0 2"></div>
+    <div fxFlex="2 auto">
+      <h2>Releases</h2>
+        <mat-nav-list class='border-list' fxLayout="column" fxLayoutGap="20px">
+          <mat-list-item *ngFor='let v of docsInfo.versions'>
+            <a [routerLink]="['/docs/', v.name]"
+              routerLinkActive='active'>
+              <div fxLayout="row" fxLayoutAlign="start center"
+                   fxLayoutGap="20px">
+                <span style="font-weight:400">{{v.name | titlecase}}</span>
+                <mat-chip-list>
+                  <mat-chip class='primary' *ngIf="v.lts" title="Long Term Support">LTS</mat-chip>
+                  <mat-chip class='warn' *ngIf="v.eol" title="End Of Life">EOL</mat-chip>
+                </mat-chip-list>
+              </div>
+              <div matLine style="font-weight: 200">{{v.description}}</div>
+            </a>
+          </mat-list-item>
+        </mat-nav-list>
+    </div>
+
+    <div fxFlex="2 auto">
+      <h2>Libraries</h2>
+      <mat-nav-list class='border-list'>
+        <span *ngFor='let lib of libsService.libraries'>
+          <a mat-list-item  *ngIf='lib.versions.length > 0'
+            href='https://gazebosim.org/libs/{{lib.name | lowercase}}'>{{lib.name | titlecase}}</a>
+        </span>
+      </mat-nav-list>
+
+    </div>
+    <div fxFlex="0 2"></div>
+  </div>
+</div>

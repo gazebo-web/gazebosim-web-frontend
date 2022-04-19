@@ -1,0 +1,59 @@
+<div class='wrapper mat-typography'>
+  <mat-toolbar class='mat-elevation-z0' [style.background]='toolbarColor'>
+    <div fxLayout='row' fxFlex='1 0 auto' fxLayoutAlign='start baseline'>
+      <a routerLink='/home'>
+        <img src='assets/images/gazebo_horz_pos_topbar.svg' width='200px'>
+      </a>
+    </div>
+
+    <div fxLayout="row" fxFlex="1 0 auto" fxShow="false" fxShow.gt-sm
+         fxLayoutGap="40px" fxLayoutAlign="start start">
+      <div></div>
+      <a routerLink='/features' routerLinkActive='active'>Features</a>
+      <a routerLink='/showcase' routerLinkActive='active'>Showcase</a>
+      <a routerLink='/docs' routerLinkActive='active'>Docs</a>
+      <a href='https://community.gazebosim.org' title="Discussion forum">Community</a>
+      <a class="moreButton" role="button" [matMenuTriggerFor]="moreMenu">More</a>
+      <mat-menu #moreMenu="matMenu">
+        <a routerLink='/about' routerLinkActive='active'><button mat-menu-item>About</button></a>
+        <a href='https://answers.gazebosim.org' title="Technical help"><button mat-menu-item>Answers</button></a>
+        <a href='https://www.openrobotics.org/blog?category=Gazebo'><button mat-menu-item>Blog</button></a>
+        <a routerLink='/media' routerLinkActive='active'><button mat-menu-item>Media</button></a>
+      </mat-menu>
+    </div>
+
+    <div fxLayout="row" fxFlex="1 auto" fxShow="false" fxShow.gt-sm 
+          fxLayoutAlign="end end">
+      <a class='stroked-button' href='{{appHost}}'>App</a>
+    </div>
+
+    <button mat-button [mat-menu-trigger-for]="menu" fxHide="false"
+            fxHide.gt-sm>
+     <mat-icon>menu</mat-icon>
+    </button>
+
+  </mat-toolbar>
+
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item routerLink="/about">About</button>
+    <button mat-menu-item routerLink="/features">Features</button>
+    <button mat-menu-item routerLink="/docs">Docs</button>
+    <a mat-menu-item href='https://community.gazebosim.org' title="Discussion forum">Community</a>
+    <a mat-menu-item href='https://answers.gazebosim.org' title="Technical help">Answers</a>
+    <a mat-menu-item href="https://blog.openrobotics.org/tag/gazebo">Blog</a>
+    <a mat-menu-item href="{{appHost}}" class="stroked-button-menu">App</a>
+  </mat-menu>
+
+  <div class='page-content'>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<footer class='mat-typography'>
+  <p>
+  Brought to you by <a class='dark' href='https://openrobotics.org'>Open Robotics</a>.
+  </p>
+  <p>
+  Except where otherwise noted, the gazebosim.org web pages are licensed under <a class='dark' href='https://creativecommons.org/licenses/by/3.0/us/'>Creative Commons Attribution 3.0</a>.
+  </p>
+</footer>

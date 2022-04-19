@@ -1,0 +1,156 @@
+<div fxLayout="column">
+  <div class='heading'>
+    <h1>About Gazebo</h1>
+    <p></p>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign='center'>
+    <aside fxFlex="4 1"></aside>
+    <div class="main" fxLayout="column" fxLayoutAlign='center' fxFlex="1 auto">
+      <p>
+      Gazebo is a collection of open source software libraries designed to
+      simplify development of high-performance applications. The primary
+      audience for Gazebo are robot developers, designers, and educators.
+      However, Gazebo has been structured to suit many different use cases.
+      Each library within Gazebo has minimal dependencies, allowing them to
+      be used in tasks ranging from solving mathematical transforms, to video
+      encoding, and up to simulation and process management. Just choose the
+      libraries you need for your application without committing to a whole
+      ecosystem.
+      </p>
+
+      <p>
+      Trust and reliablity has been established through a curation and
+      maintainence process lead by <a href="https://openrobotics.org">Open Robotics</a> in collaboration with a community of developers. Each
+      library within Gazebo has been designed to serve a specific purpose.
+      This philosophy reduces code clutter, establishes consistency between
+      libraries, and simplifies finding solutions. Development and maintenance
+      adheres to a protocol consisting of multiple reviews, code checkers,
+      and continuous integration. Take a look at <a href="https://gazebosim.org/docs/all/roadmap">Gazebo's roadmap</a> for upcoming features and the
+      latest improvements.
+      </p>
+
+      <h2>Guiding principles</h2>
+
+      <p>
+      The development of Gazebo follows these core principles.
+      </p>
+
+      <ul>
+        <li>
+          <b>Generality</b>:
+            Gazebo does not specialize in one type of robot. Features are
+            meant to apply to as many use cases in robotics as possible.
+        </li>
+        <li>
+          <b>Stability</b>:
+            Stable releases are provided to the community periodically. Subsequent
+            improvements to stable releases strive to keep backwards compatibility
+            of API, ABI and behaviour. Breaking changes target an upcoming release.
+        </li>
+        <li>
+          <b>Updates</b>:
+            New backwards compatible features are added to stable releases
+            whenever possible. This way, users can take advantage of new features
+            without the need to upgrade to a later release, and can postpone
+            upgrade efforts until breaking changes are needed.
+        </li>
+        <li>
+          <b>Ease of use</b>:
+            Default behaviors should be beginner friendly. For example, by
+            default, Gazebo starts running a graphical interface. Advanced
+            users can run headless, but extra configuration is necessary to
+            achieve this behavior.
+        </li>
+        <li>
+          <b>Modularity</b>:
+            Gazebo packages are as independent as possible so that they can be
+            used in a variety of projects besides Gazebo. For example, a user of
+            Gazebo Rendering does not need to install, compile, or even know
+            about Gazebo Physics.
+        </li>
+        <li>
+          <b>Extensibility</b>:
+            Users do not need to fork the core libraries or compile from source to
+            add functionality. For example, a new rendering engine can be loaded
+            as a plugin.
+        </li>
+        <li>
+          <b>Flexibility</b>:
+            Users are given options to opt in or out of features whenever
+            reasonable. For example, physics is integrated into Gazebo as a
+            plugin, so users can load a simulation without physics, or with
+            alternative physics, if desired.
+        </li>
+        <li>
+          <b>Maintainability</b>:
+            The long-term maintainability of the code is taken into account
+            during development. To that end, the project follows strict testing,
+            documentation, linting and style standards.
+        </li>
+        <li>
+          <b>Portability</b>:
+            Gazebo is supported on all major operating systems: Linux, macOS
+            and Windows. This impacts how dependencies are chosen and features
+            are implemented.
+        </li>
+      </ul>
+
+      <h2>History</h2>
+
+      <p>
+      Gazebo was started in 2002. After over 15 years of
+      development it was time for a significant upgrade and modernization.
+      This upgrade also provided the opportunity to move away from
+      a monolithic architecture to a collection of loosely coupled libraries.
+      </p>
+
+      <p>
+      We branded the new development effort Igntion in order to differentiate
+      it from Gazebo that had come before, which is now referred to as Gazebo
+      Classic. Those changes have gone very well, thanks in no small part to
+      contributions and support from our worldwide community of users and
+      other stakeholders.
+      </p>
+
+      <p>
+      In 2022 we encountered a trademark obstacle regarding the use of the
+      name "Ignition". We used this as an opportunity to switch back the
+      widely known name "Gazebo". Going forward, the modern robotics
+      software collection formerly known as Ignition, is now branded Gazebo.
+      </p>
+
+
+
+      <img src='assets/images/timeline.svg'>
+      <div fxFlex='auto' fxLayout.lt-md='column'
+           fxLayout.gt-sm='row'
+           fxLayoutAlign.lt-md='start center'
+           fxLayoutAlign.gt-sm='start center'>
+      </div>
+
+      <h2>Terminology</h2>
+      <div fxLayout="column" fxLayoutAlign='start start'>
+        <div class='term'>
+          <h3>Gazebo</h3>
+          <p>The complete Gazebo platform which includes software libraries and cloud services.</p>
+
+          <ul>
+            <li><i>"Gazebo includes the Gazebo Simulator."</i></li>
+            <li><i>"There is a new release of Gazebo out called Garden."</i></li>
+          </ul>
+        </div>
+
+        <div class='term'>
+          <h3>Gazebo Classic</h3>
+          <p>A version of Gazebo prior to development of latest Gazebo libraries. The classic versions are numerical with major version number ranging from 0 to 11.</p>
+
+          <ul>
+            <li><i>"My project depends on Gazebo Classic."</i></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <aside fxFlex="4 auto"></aside>
+  </div>
+</div>

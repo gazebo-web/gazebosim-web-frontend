@@ -1,0 +1,26 @@
+@import '~@angular/material/theming';
+@import '../../styles/styles.scss';
+
+
+/* Classes that make the gallery keep an aspect ratio. */
+.gallery-container-outer {
+  height: 0;
+  width: 100%;
+  /* Aspect Ratio: 16:9. 9/16 = 0.5625 */
+  padding-top: 56.25%;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-container-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/deep/ .ngx-gallery-thumbnail.ngx-gallery-active {
+  background-color: mat-color($custom-theme-primary, 100);
+  border-bottom: 2px solid mat-color($custom-theme-primary, 600);
+}

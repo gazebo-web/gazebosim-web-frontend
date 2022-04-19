@@ -1,0 +1,30 @@
+<div class="heading">
+  <h1>Development Libraries</h1>
+  <p>Explore the complete set of development libraries offered by Gazebo.</p>
+</div>
+
+<div class="lib-list">
+  <div *ngIf="libsService.libraries == undefined || libsService.libraries.length ==0"><img src='assets/images/spinner.gif'/></div>
+
+  <mat-list>
+    <mat-list-item *ngFor="let lib of libsService.libraries" >
+      <h1 mat-line>
+        <a routerLink='/libs/{{lib.name | lowercase}}'>{{lib.name | titlecase}}</a>
+        <small *ngIf="lib.versions.length > 0">
+          {{lib.versions[0].major}}.{{lib.versions[0].minor}}.{{lib.versions[0].patch}}</small></h1>
+
+      <p mat-line>
+        <a routerLink='/libs/{{lib.name | lowercase}}' mat-button color="primary"><mat-icon>fullscreen</mat-icon> Details</a>
+
+        <a href="{{lib.repo}}" mat-button color="primary"><mat-icon>code</mat-icon> Source Code</a>
+
+        <span *ngIf="lib.versions.length > 0">
+        <a href="/api/{{lib.name | lowercase}}/{{lib.versions[0].major}}.{{lib.versions[0].minor}}/index.html" mat-button color="primary"><mat-icon>description</mat-icon> API & Tutorials</a>
+        </span>
+      </p>
+
+      <p mat-line>{{lib.description}}</p>
+    </mat-list-item>
+
+  </mat-list>
+</div>

@@ -1,0 +1,46 @@
+.job_setup: &job_setup
+  - export API_HOST=https://api.ignitionrobotics.org
+  - export PATH=~/.local/bin:$PATH
+
+.deploy:
+  image: registry.gitlab.com/ignitionrobotics/web/web
+  script:
+    - *job_setup
+    - npm install
+      # - npm test
+    - npm run codecov
+    - npm run build:prod
+    - aws s3 sync dist/ s3://$APPLICATION_ENVIRONMENT
+    - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
+
+default:
+  image: registry.gitlab.com/ignitionrobotics/web/web
+
+main_job:
+  script:
+    - *job_setup
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "staging" && $CI_COMMIT_BRANCH != "production"'
+      when: always
+
+staging:
+  only:
+    - staging
+  extends: .deploy
+  before_script:
+    - export APPLICATION_ENVIRONMENT=staging.ignitionrobotics.org
+    - export AUTH0_REDIRECT=https://staging.ignitionrobotics.org/callback
+    - export APP_HOST=https://staging-app.ignitionrobotics.org
+    - export CLOUDFRONT_DISTRIBUTION_ID=E3TW89ONHYZ0RL
+    - export PRODUCTION_DEPLOY=false
+
+production:
+  only:
+    - production
+  extends: .deploy
+  before_script:
+    - export APPLICATION_ENVIRONMENT=ignitionrobotics.org
+    - export AUTH0_REDIRECT=https://ignitionrobotics.org/callback
+    - export APP_HOST=https://app.ignitionrobotics.org
+    - export CLOUDFRONT_DISTRIBUTION_ID=E4UPD7DJNY4KA
+    - export PRODUCTION_DEPLOY=true

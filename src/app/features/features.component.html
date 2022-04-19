@@ -1,0 +1,28 @@
+<div fxLayout="column">
+
+  <div class='heading'>
+    <h1>Features and Benefits</h1>
+    <p>Checkout out the <a routerLink='/showcase' routerLinkActive='active'>Showcase</a> for inspiration.</p>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign='center' fxFill>
+    <aside fxFlex="1 auto"></aside>
+    <div fxLayout="column" fxLayoutAlign='center' fxFlex="1 auto">
+      <div class="section" *ngFor='let group of groups'>
+        <h1>{{group.name}}</h1>
+        <div class="card-row">
+          <div class="card" *ngFor='let feature of group.features'>
+            <div fxLayout="column" fxLayoutAlign='space-around center' fxFill>
+              <div class='card-header'>{{feature.name}}</div>
+              <div class='card-description' [innerHTML]="feature.description"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside fxFlex="1 auto"></aside>
+  </div>
+  <div style="padding: 20px;" fxLayoutAlign="center">
+    <button mat-raised-button color='primary' routerLink='/docs'>Get Started</button>
+  </div>
+</div>
