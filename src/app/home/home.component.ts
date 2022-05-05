@@ -84,6 +84,10 @@ export class HomeComponent implements OnInit {
         medium: 'assets/images/gallery_6.png',
         small: 'assets/images/gallery_6.png',
       },
+      {
+        medium: 'assets/images/gallery_7.png',
+        small: 'assets/images/gallery_7.png',
+      },
     ];
   }
 }

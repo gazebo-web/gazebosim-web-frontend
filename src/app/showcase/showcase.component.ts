@@ -81,6 +81,10 @@ export class ShowcaseComponent implements OnInit {
         medium: 'assets/images/gallery/gallery_6.png',
         small: 'assets/images/gallery/gallery_6.png',
       },
+      {
+        medium: 'assets/images/gallery/gallery_7.png',
+        small: 'assets/images/gallery/gallery_7.png',
+      },
     ];
   }
 }
