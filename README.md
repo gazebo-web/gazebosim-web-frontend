@@ -39,8 +39,8 @@ https://staging.gazebosim.org. The `production` branch is used to deploy
 this website to `https://gazebosim.org`.
 
 Github actions will automatically deploy `staging` on push. The `production`
-branch will only deploy when an authorized user triggers the deployment on
-the Github UI.
+branch will only deploy when an authorized user approves the deployment on
+the Github Actions UI.
 
 ### Deployment to `integration` environment
 
