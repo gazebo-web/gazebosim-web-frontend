@@ -1,8 +1,8 @@
 ## Gazebosim Web Frontend
 
-* Framework: Angular 5
-* CI: GitLab pipelines
-* CD: GitLab pipelines + AWS CloudFront
+* Framework: Angular
+* CI: Github actio
+* CD: GitLab actiosn + AWS CloudFront
 
 ## Quickstart
 
@@ -32,9 +32,19 @@
 
     npm run build:prod
 
-## Deployment to `integration` environment
+## Deployment
 
-### One-time setup
+The `staging` branch is used to deploy this website to
+https://staging.gazebosim.org. The `production` branch is used to deploy
+this website to `https://gazebosim.org`.
+
+Github actions will automatically deploy `staging` on push. The `production`
+branch will only deploy when an authorized user triggers the deployment on
+the Github UI.
+
+### Deployment to `integration` environment
+
+#### One-time setup
 
 * Install the following dependencies before using the script:
 
@@ -76,7 +86,7 @@
 
      `export CLOUDFRONT_DISTRIBUTION_ID=E2RSG343FDF43GEXAMPLE`
 
-### Deploy to the `integration` environment
+#### Deploy to the `integration` environment
 
 Make sure that you are in your application's project directory and run:
 
