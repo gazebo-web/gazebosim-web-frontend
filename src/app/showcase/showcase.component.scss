@@ -24,3 +24,32 @@
   background-color: mat-color($custom-theme-primary, 100);
   border-bottom: 2px solid mat-color($custom-theme-primary, 600);
 }
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+  border-bottom: 1px solid rgb(219, 219, 219);
+}
+.section:last-of-type {
+  border-bottom: 1px solid rgba(219, 219, 219, 0);
+}
+
+.section h1 {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 24px;
+  color: mat-color($custom-theme-primary, 400);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section.first h1 {
+  font-weight: 300;
+}
+
+img {
+  width: 100%;
+}
