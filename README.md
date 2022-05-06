@@ -1,7 +1,5 @@
 ## Gazebosim Web Frontend
 
-Testing
-
 * Framework: Angular 5
 * CI: GitLab pipelines
 * CD: GitLab pipelines + AWS CloudFront
