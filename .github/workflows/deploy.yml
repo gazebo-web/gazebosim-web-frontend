@@ -23,6 +23,7 @@ jobs:
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       API_HOST:  ${{ secrets.API_HOST }}
       APP_HOST: ${{ secrets.APP_HOST }}
+      PRODUCTION_DEPLOY: false
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -60,6 +61,7 @@ jobs:
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       API_HOST:  ${{ secrets.API_HOST }}
       APP_HOST: ${{ secrets.APP_HOST }}
+      PRODUCTION_DEPLOY: true
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
