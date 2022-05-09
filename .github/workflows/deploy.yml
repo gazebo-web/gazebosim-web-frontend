@@ -24,6 +24,11 @@ jobs:
       API_HOST:  ${{ secrets.API_HOST }}
       APP_HOST: ${{ secrets.APP_HOST }}
       PRODUCTION_DEPLOY: false
+      AUTH0_AUDIENCE:  ${{ secrets.AUTH0_AUDIENCE }}
+      AUTH0_CLIENT_DOMAIN:  ${{ secrets.AUTH0_CLIENT_DOMAIN }}
+      AUTH0_CLIENT_ID:  ${{ secrets.AUTH0_CLIENT_ID }}
+      AUTH0_LOGOUT_REDIRECT:  ${{ secrets.AUTH0_LOGOUT_REDIRECT }}
+      AUTH0_REDIRECT:  ${{ secrets.AUTH0_REDIRECT }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -42,13 +47,18 @@ jobs:
       - name: Build
         run: npm run build:prod
 
-      - name: Deploy
-        uses: lbertenasco/s3-deploy@v1
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          folder: dist
-          bucket: ${{ secrets.S3_BUCKET }}
-          dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          invalidation: / *
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: "us-east-1"
+
+      - name: Upload package to S3 bucket
+        run: aws s3 sync dist/app s3://${{ secrets.S3_BUCKET }}
+
+      - name: Invalidate Cloudfront
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths '/*'
 
   production-deploy:
     if: github.ref == 'refs/heads/production'
@@ -62,6 +72,11 @@ jobs:
       API_HOST:  ${{ secrets.API_HOST }}
       APP_HOST: ${{ secrets.APP_HOST }}
       PRODUCTION_DEPLOY: true
+      AUTH0_AUDIENCE:  ${{ secrets.AUTH0_AUDIENCE }}
+      AUTH0_CLIENT_DOMAIN:  ${{ secrets.AUTH0_CLIENT_DOMAIN }}
+      AUTH0_CLIENT_ID:  ${{ secrets.AUTH0_CLIENT_ID }}
+      AUTH0_LOGOUT_REDIRECT:  ${{ secrets.AUTH0_LOGOUT_REDIRECT }}
+      AUTH0_REDIRECT:  ${{ secrets.AUTH0_REDIRECT }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -80,10 +95,15 @@ jobs:
       - name: Build
         run: npm run build:prod
 
-      - name: Deploy
-        uses: lbertenasco/s3-deploy@v1
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          folder: dist
-          bucket: ${{ secrets.S3_BUCKET }}
-          dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          invalidation: / *
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: "us-east-1"
+
+      - name: Upload package to S3 bucket
+        run: aws s3 sync dist/app s3://${{ secrets.S3_BUCKET }}
+
+      - name: Invalidate Cloudfront
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths '/*'
