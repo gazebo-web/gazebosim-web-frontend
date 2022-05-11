@@ -4,7 +4,7 @@
 </div>
 
 <div class="lib-list">
-  <div *ngIf="libsService.libraries == undefined || libsService.libraries.length ==0"><img src='assets/images/spinner.gif'/></div>
+  <div id="html-spinner" *ngIf="libsService.libraries == undefined || libsService.libraries.length ==0"></div>
 
   <mat-list>
     <mat-list-item *ngFor="let lib of libsService.libraries" >
