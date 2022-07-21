@@ -1,8 +1,8 @@
 export class Version {
-  public name: string;
-  public lts: boolean;
-  public eol: boolean;
-  public description: string;
+  public name: string = '';
+  public lts: boolean = false;
+  public eol: boolean = false;
+  public description: string = ''; 
 }
 
 /*

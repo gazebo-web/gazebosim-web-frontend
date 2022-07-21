@@ -1,13 +1,13 @@
 import { Version } from './version';
 
 export class Library {
-  public name: string;
-  public versions: Version[];
-  public repo: string;
-  public reporaw: string;
-  public api: string;
-  public description: string;
-  public released: boolean;
+  public name: string = '';
+  public versions: Version[] = [];
+  public repo: string = '';
+  public reporaw: string = '';
+  public api: string = '';
+  public description: string = '';
+  public released: boolean = true;
 
   constructor() {
     this.name = 'Unknown';

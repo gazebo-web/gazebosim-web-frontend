@@ -1,5 +1,0 @@
-{
-  "AWS_REGION": "us-west-1",
-  "STARTUP_SIGNUP_TABLE": "gazebosim-signup-app_production",
-  "NEW_SIGNUP_TOPIC": "arn:aws:sns:us-west-1:200670743174:signup-notifications"
-}

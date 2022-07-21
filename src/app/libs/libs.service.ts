@@ -1,23 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Headers, Response } from '@angular/http';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { Observable } from 'rxjs';
 import { Library } from './lib';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { JsonClassFactoryService } from '../factory/json-class-factory.service';
+import { BehaviorSubject } from 'rxjs';
 import { UiError } from '../ui-error';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class LibsService {
 
-  public libraries: Library[];
+  public libraries: Library[] = [];
   public libraries$ = new BehaviorSubject<Library[]>(this.libraries);
 
-  private libsUrl = `${API_HOST}/${API_VERSION}/libs`;
+  private libsUrl = `${environment.API_HOST}/${environment.API_VERSION}/libs`;
 
-  constructor(private http: HttpClient,
-              private factory: JsonClassFactoryService) {
+  constructor(private http: HttpClient) {
     this.initializeData();
   }
 
@@ -48,12 +45,6 @@ export class LibsService {
   }
 
   public getLibs(): Observable<Library[]> {
-    return this.http.get<Library[]>(this.libsUrl)
-      .catch(this.handleError);
-  }
-
-  private handleError(response: HttpErrorResponse): ErrorObservable {
-    console.error('An error occurred', response);
-    return Observable.throw(new UiError(response));
+    return this.http.get<Library[]>(this.libsUrl);
   }
 }

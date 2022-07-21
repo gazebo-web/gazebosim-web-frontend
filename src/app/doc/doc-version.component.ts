@@ -7,6 +7,7 @@ import { DocsInfo } from './docsinfo';
 import { Page } from './page';
 import { LibsService } from '../libs/libs.service';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'gz-doc-version',
@@ -17,14 +18,14 @@ import { Router } from '@angular/router';
 export class DocVersionComponent implements OnInit, AfterViewChecked {
 
   public docContent: string = '';
-  public version: string;
-  public pageName: string;
-  public pageVersion: string;
+  public version: string = '';
+  public pageName: string = '';
+  public pageVersion: string = '';
   public docsInfo: DocsInfo;
   public editLink: string = '';
   public renderedContent: SafeHtml;
   private page: Page;
-  private fragment: string;
+  private fragment: string = '';
 
   constructor(public libsService: LibsService,
               private route: ActivatedRoute,
@@ -35,7 +36,7 @@ export class DocVersionComponent implements OnInit, AfterViewChecked {
 
     // Render images from the server.
     this.markdownService.renderer.image = (href: string, title: string, text: string) => {
-      return '<img style="max-width:100%" src="' + `${API_HOST}` + '/' + `${API_VERSION}` +
+      return '<img style="max-width:100%" src="' + `${environment.API_HOST}` + '/' + `${environment.API_VERSION}` +
         '/images/' + this.version + '/' + href +
         '" title="' + title + '" alt="' + text + '"></img>';
     };
@@ -92,7 +93,7 @@ export class DocVersionComponent implements OnInit, AfterViewChecked {
     this.docsInfo = this.route.snapshot.data['docsInfo'];
 
     this.route.fragment.subscribe((fragment) => {
-      this.fragment = fragment;
+      this.fragment = fragment!;
     });
 
     this.route.params.subscribe((params) => {
@@ -116,6 +117,7 @@ export class DocVersionComponent implements OnInit, AfterViewChecked {
               this.page = element;
               return true;
             }
+            return false;
           });
         }
 
@@ -150,6 +152,7 @@ export class DocVersionComponent implements OnInit, AfterViewChecked {
                   }
                 }
               }
+              return false;
             });
           } catch (err) {
             this.router.navigate(['/not-found']);
@@ -168,8 +171,9 @@ export class DocVersionComponent implements OnInit, AfterViewChecked {
       this.titleService.setTitle('Gazebo - Docs: ' + this.page.title);
       this.docService.getDoc(this.pageVersion, this.page.file).subscribe((doc) => {
         this.docContent = doc;
-        this.renderedContent = this.markdownService.compile(doc);
+        this.renderedContent = this.markdownService.parse(doc);
       });
+      return true;
     });
   }
 
@@ -178,10 +182,10 @@ export class DocVersionComponent implements OnInit, AfterViewChecked {
       if (this.fragment) {
         const elem = document.querySelector('#' + this.fragment);
         if (elem !== undefined && elem !== null) {
-          document.querySelector('#' + this.fragment).scrollIntoView();
+          document.querySelector('#' + this.fragment!)!.scrollIntoView();
           // Clear the fragment, otherwise clicking on another button will just
           // reload the page to the current fragment.
-          this.fragment = null;
+          this.fragment = '';
         }
       }
     } catch (e) {

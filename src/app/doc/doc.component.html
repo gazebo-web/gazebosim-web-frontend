@@ -5,7 +5,7 @@
   </div>
 
   <div class='card-container'>
-    <div *ngFor="let doc of docsInfo.pages['all'] | gzListedFilter:{unlisted: false}" class="docs-card">
+    <div *ngFor="let doc of docsInfo.pages['all'] | gzListedFilter" class="docs-card">
       <a [routerLink]="['/docs/all/', doc.name]">
         <section>{{doc.title | titlecase}}</section>
         <p>{{doc.description}}</p>

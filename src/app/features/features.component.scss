@@ -1,5 +1,4 @@
-@import '~@angular/material/theming';
-@import '../../styles/styles.scss';
+@import '../../styles.scss';
 
 .section {
   display: flex;
@@ -48,7 +47,7 @@
 .card-row {
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
 }
 

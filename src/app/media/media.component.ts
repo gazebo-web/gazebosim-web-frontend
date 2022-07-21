@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { markParentViewsForCheckProjectedViews } from '@angular/core/src/view/util';
 
 @Component({
   selector: 'gz-media',
