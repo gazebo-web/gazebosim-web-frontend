@@ -1,0 +1,66 @@
+<div fxLayout="column">
+
+  <div class='heading'>
+    <h1>Showcase</h1>
+    <p>
+    Enjoy a selection of highlights from Gazebo. Additional media can be found at our <a href="https://www.youtube.com/c/GazeboSim">Youtube channel</a>.
+    </p>
+  </div>
+  <div fxLayout="row" fxLayoutAlign='center' fxFill>
+
+    <aside fxFlex="0 1 20%"></aside>
+
+    <div fxLayout="column" fxLayoutAlign="center" fxFlex="1 auto">
+
+      <!-- Picture showcase -->
+      <div class="section">
+        <h1>Gallery</h1>
+          <div class="gallery-container-outer">
+            <div class="gallery-container-inner" fxLayoutAlign="center center">
+              <ngx-gallery [options]="galleryOptions" [images]="galleryImages">
+              </ngx-gallery>
+
+            </div>
+        </div>
+      </div>
+
+      <!-- Project showcase -->
+      <div class="section">
+        <h1>Projects</h1>
+
+        <div fxLayout="column" fxLayoutAlign='center'>
+          <div fxLayout="row" fxLayoutAlign='center'>
+
+            <div fxFlex="0 0 60%" fxLayout="column">
+              <h2><a href="https://github.com/gazebosim/gz-omni">Omniverse</a></h2>
+              <p>
+              This project linked Gazebo with NVIDIA Omniverse through a <a
+                href="https://github.com/gazebosim/gz-omni">connector</a>. By
+              using this connector, Gazebo can create, remove, and position
+              models in Omniverse. Similarly, Omniverse can create and remove
+              models from Gazebo. 
+              </p>
+
+              <p>NVIDIA Omniverse is an easily extensible platform for 3D
+              design collaboration and scalable multi-GPU, real-time,
+              true-to-reality simulation. Omniverse revolutionizes the way
+              we create and develop as individuals and work together as
+              teams, bringing more creative possibilities and efficiency to
+              3D creators, developers and enterprises.
+              </p>
+            </div>
+        
+            <div fxFlex="0 0 40%">
+              <a href="https://github.com/gazebosim/gz-omni">
+              <img mat-card-image src='assets/images/projects/omniverse.png'/>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <aside fxFlex="0 1 20%"></aside>
+  </div>
+</div>

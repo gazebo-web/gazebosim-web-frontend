@@ -1,0 +1,23 @@
+@import '../../styles.scss';
+
+.term h3 {
+  font-weight: 500;
+}
+
+b {
+  font-weight: 500;
+}
+
+.term p {
+  font-weight: 300;
+}
+
+.image {
+  max-width: 100%;
+  display: flex;
+}
+
+.main {
+  padding: 0px 10px;
+  max-width: 80%!important;
+}
