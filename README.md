@@ -20,8 +20,9 @@
 
        . setup.bash
 
-1. Install (be sure you have `npm` and `nodejs` version 6)
+1. Install (be sure you have `npm` and `nodejs` version 8)
 
+        nvm use 16
         npm install
 
 ### Serve for development
@@ -30,7 +31,7 @@
 
 ### Build for production
 
-    npm run build:prod
+    npm run build
 
 ## Deployment
 
