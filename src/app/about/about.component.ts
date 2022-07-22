@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { markParentViewsForCheckProjectedViews } from '@angular/core/src/view/util';
 
 @Component({
   selector: 'gz-about',

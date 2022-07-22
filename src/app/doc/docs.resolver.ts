@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { DocsInfo } from './docsinfo';
 import { DocService } from './doc.service';
@@ -24,9 +24,6 @@ export class DocsResolver implements Resolve<DocsInfo> {
    * Resolve method.
    */
   public resolve(route: ActivatedRouteSnapshot): Observable<DocsInfo> {
-    return this.docService.getDocs().catch(
-      (err) => {
-        return Observable.of(null);
-      });
+    return this.docService.getDocs();
   }
 }

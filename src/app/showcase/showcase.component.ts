@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { markParentViewsForCheckProjectedViews } from '@angular/core/src/view/util';
 import { NgxGalleryOptions,
          NgxGalleryImage,
-         NgxGalleryImageSize } from 'ngx-gallery';
+         NgxGalleryImageSize } from '@kolkov/ngx-gallery';
 
 @Component({
   selector: 'gz-showcase',
@@ -18,14 +17,14 @@ export class ShowcaseComponent implements OnInit {
    *
    * See https://github.com/lukasz-galka/ngx-gallery#ngxgalleryoptions for more details.
    */
-  public galleryOptions: NgxGalleryOptions[];
+  public galleryOptions: NgxGalleryOptions[] = [];
 
   /**
    * The images to be displayed in the gallery.
    *
    * See https://github.com/lukasz-galka/ngx-gallery#ngxgalleryimage for more details.
    */
-  public galleryImages: NgxGalleryImage[];
+  public galleryImages: NgxGalleryImage[] = [];
 
   constructor(private titleService: Title, private meta: Meta) {
   }
@@ -42,11 +41,7 @@ export class ShowcaseComponent implements OnInit {
       width: '100%',
       height: '100%',
       thumbnailsColumns: 5,
-      imageArrowsAutoHide: false,
-      thumbnailsArrowsAutoHide: false,
       thumbnailsPercent: 15,
-      arrowPrevIcon: 'gallery-ic_chevron_left circle-icon',
-      arrowNextIcon: 'gallery-ic_chevron_right circle-icon',
       preview: false,
       imageAutoPlay: false,
       imageAutoPlayInterval: 3000

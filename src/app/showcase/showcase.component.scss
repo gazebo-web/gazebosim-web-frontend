@@ -1,6 +1,8 @@
-@import '~@angular/material/theming';
-@import '../../styles/styles.scss';
+@import '../../styles.scss';
 
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+    transform: none !important;
+}
 
 /* Classes that make the gallery keep an aspect ratio. */
 .gallery-container-outer {
@@ -20,7 +22,15 @@
   height: 100%;
 }
 
-/deep/ .ngx-gallery-thumbnail.ngx-gallery-active {
+ngx-gallery ::ng-deep .ngx-gallery-arrow {
+  color: #000000;
+}
+
+ngx-gallery ::ng-deep .ngx-gallery-thumbnail {
+  border: 0px!important;
+}
+
+ngx-gallery ::ng-deep .ngx-gallery-thumbnail.ngx-gallery-active {
   background-color: mat-color($custom-theme-primary, 100);
   border-bottom: 2px solid mat-color($custom-theme-primary, 600);
 }
