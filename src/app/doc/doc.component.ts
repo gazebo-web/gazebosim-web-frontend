@@ -22,7 +22,6 @@ export class DocComponent implements OnInit, AfterViewChecked {
   public pageName: string = '';
   public docsInfo: DocsInfo;
   public editLink: string = '';
-  //public renderedContent: SafeHtml;
   public pages: Page[] = [];
   private page: Page;
   private fragment: string = '';
@@ -65,8 +64,8 @@ export class DocComponent implements OnInit, AfterViewChecked {
     // Render header anchors
     this.markdownService.renderer.heading = (text: string, level: number) => {
       const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-      return '<h' + level + '  id="' + escapedText + '" class="heading-anchor">' + "<a name='" + escapedText + "' href='#'>" + text + "</a>" +
-        '<a name="' + escapedText + '" class="anchor" title="Link to this heading" name="' + escapedText + '" href="docs/'
+      return '<h' + level + '  id="' + escapedText + '" class="heading-anchor">' +  text +
+        '<a name="' + escapedText + '" class="anchor" title="Link to this heading" href="docs/'
           + this.page.version + '/' + this.page.name + '#' + escapedText + '">' +
           '<span style="padding-left:4px" \
             id="heading-anchor-img"><img \
@@ -204,9 +203,6 @@ export class DocComponent implements OnInit, AfterViewChecked {
       this.titleService.setTitle('Gazebo - Docs: ' + this.page.title);
       this.docService.getDoc(this.page.version, this.page.file).subscribe((doc) => {
         this.docContent = doc;
-        /*this.renderedContent = this.markdownService.parse(doc);
-        console.log(this.renderedContent);
-       */
       });
       return true;
     });
@@ -221,8 +217,8 @@ export class DocComponent implements OnInit, AfterViewChecked {
         if (elem !== undefined && elem !== null) {
           console.log('ngAfterViewChecked', elem);
           setTimeout(() => {
-            elem.scrollIntoView();
-          }, 2000);
+            elem.scrollIntoView({behavior: 'smooth', block: 'start'});
+          }, 100);
           // this.viewportScroller.scrollToAnchor(this.fragment);
           // Clear the fragment, otherwise clicking on another button will just
           // reload the page to the current fragment.

@@ -57,10 +57,10 @@ import { SafePipe } from './doc/safe.pipe';
     HttpClientModule,
     FlexLayoutModule,
     MarkdownModule.forRoot({
+      sanitize: SecurityContext.NONE,
       markedOptions: {
         provide: MarkedOptions,
         useValue: {
-          sanitize: SecurityContext.NONE,
           gfm: true,
           breaks: false,
           smartLists: true,
