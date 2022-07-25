@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTreeModule } from '@angular/material/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
@@ -76,6 +77,7 @@ import { SafePipe } from './doc/safe.pipe';
     MatListModule,
     MatMenuModule,
     MatToolbarModule,
+    MatTreeModule,
     MatSelectModule,
     MatSnackBarModule,
     NgxGalleryModule,

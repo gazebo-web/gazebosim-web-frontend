@@ -1,80 +1,18 @@
 @import '../../styles.scss';
 
-.card-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 16px 0;
-
-  .docs-card {
-    height: 194px;
-    width: 30%;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 2px 2px rgba(10,16,20,.24), 0 0 2px rgba(10,16,20,.12);
-    box-sizing: border-box;
-    transition: box-shadow .5s;
-    max-width: 340px;
-    min-width: 262px;
-    margin: 24px 8px;
-    padding-bottom: 48px;
-    position: relative;
-    section {
-      color: #333;
-      font-size: 1.5rem;
-      //line-height: 2.4rem;
-      margin: auto;
-      padding: 32px 0 24px;
-      text-transform: none;
-      text-align: center;
-    }
-    p {
-      color: #444;
-      // font-size: 1.0rem;
-      // line-height: 1.4rem;
-      padding: 0 16px;
-      margin: 0px;
-      width: 100%;
-      text-align: center;
-    }
-
-    p.card-footer {
-      bottom: 0;
-      border-top: .5px solid #dbdbdb;
-      box-sizing: border-box;
-      position: absolute;
-      right: 0;
-      color: #6e6e6e;
-      text-align: right;
-      a {
-        line-height: 4em;
-      }
-    }
-  }
-
-  .docs-card:hover {
-    box-shadow: 0 8px 8px rgba(10,16,20,.24), 0 0 8px rgba(10,16,20,.12);
-    section {
-      color: #1976d2;
-    }
-  }
-}
-
-.docs-card {
-  width: 200px;
-}
-
-.docs-card mat-card-title {
+strong {
   font-weight: 500;
-  color: rgb(52, 63, 68);
-  font-size: 18px!important;
 }
 
 .heading.version {
   padding: 20px 40px;
   align-items: start;
   justify-content: center;
+  margin-bottom: 0!important;
+}
+.heading.version small {
+  color: #ffffff;
+  font-size: 12px;
 }
 
 .heading.version h1 {
@@ -101,7 +39,7 @@
 }
 
 .markdown-content {
-  padding: 0px 10px;
+  padding: 40px 40px;
 }
 
 
@@ -162,4 +100,28 @@ mat-chip.warn {
   background-color: mat-color($custom-theme-warn, 600)!important;
   color: #ffffff!important;
   font-weight: 300;
+}
+
+mat-tree-node {
+  background-color: #F8F9FA;
+  min-height: 28px!important;
+}
+mat-tree-node:hover {
+  background-color: #EfF0F1;
+}
+mat-tree-node button {
+  border: 0;
+  background-color: transparent;
+  min-width: 24px;
+}
+
+.release {
+  .mat-form-field-label, .mat-form-field-outline,
+  .mat-select-value, .mat-select-arrow {
+    color: #ffffff!important;
+  }
+}
+
+.menu-lts {
+  font-size: 80%;
 }

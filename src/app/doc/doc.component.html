@@ -1,25 +1,45 @@
 <div fxLayout='column' fxLayoutGap='40px'>
   <div class='heading version'>
-    <h1>Gazebo Documentation</h1>
+    <div fxLayout="row" fxFill fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutGap="20">
+        <div fxLayout="column">
+          <h1>Docs / Gazebo {{version.name | titlecase}}</h1>
+          <small>{{version.description}}</small>
+        </div>
+        <mat-chip-list>
+          <mat-chip *ngIf="version.lts" class='primary' title='Long Term Support'>LTS</mat-chip>
+          <mat-chip *ngIf="version.eol" class='warn' title='End Of Life'>EOL</mat-chip></mat-chip-list>
+      </div>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Distribution</mat-label>
-      <mat-select [(value)]="version" (selectionChange)="onVersionChange($event.value)">
-        <mat-option></mat-option>
-        <mat-option [value]="dist.name" *ngFor="let dist of docsInfo.versions">{{ dist.name }}</mat-option>
-      </mat-select>
-  </mat-form-field>
-
-    <p><a routerLink='/docs'>Docs</a> / Gazebo <span *ngIf='version !== "all"'>{{version | titlecase}}</span></p>
+      <mat-form-field appearance="outline" class='release'>
+        <mat-label>Release</mat-label>
+        <mat-select [(value)]="version.name" (selectionChange)="onVersionChange($event.value)">
+          <mat-option [value]="dist.name" *ngFor="let dist of docsInfo.versions">{{ dist.name | titlecase }} <span *ngIf="dist.lts" class='menu-lts'>(LTS)</span><span *ngIf="dist.eol" class='menu-lts'>(EOL)</span></mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
 
   <div fxLayout='row'>
-    <div fxLayout='column'>
-      <ul>
-        <li *ngFor="let page of pages | gzListedFilter" class="docs-card"><a [routerLink]="[page.link]">{{page.title | titlecase}}</a>
-        </li>
-      </ul>
+    <div fxLayout='column' fxFlex="280px" style="background-color: #f8f9fa; border-right: 1px solid #dedede">
+      <mat-tree [dataSource]='dataSource' [treeControl]='treeControl'>
+        <mat-tree-node *matTreeNodeDef='let node' matTreeNodePadding>
+          <div style='width: 36px!important'></div>
+          <a [routerLink]="[node.link]">{{node.name | titlecase}}</a>
+        </mat-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'Toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          <a [routerLink]="[node.link]">{{node.name | titlecase}}</a>
+        </mat-tree-node>
+      </mat-tree>
     </div>
+
     <div fxLayout='row'>
       <div markdown [data]="docContent" class="markdown-content"></div>
   
@@ -32,54 +52,4 @@
       </div>
   </div>
 
-  <!--
-
-  <div class='card-container'>
-    <div *ngFor="let doc of docsInfo.pages['all'] | gzListedFilter" class="docs-card">
-      <a [routerLink]="['/docs/all/', doc.name]">
-        <section>{{doc.title | titlecase}}</section>
-        <p>{{doc.description}}</p>
-        <p class='card-footer'>
-          <a [routerLink]="['/docs/all/', doc.name]">Learn More</a>
-        </p>
-      </a>
-    </div>
-  </div>
-
-
-  <div fxLayout="row" fxLayoutAlign='space-between' fxLayoutGap="40px" fxFill>
-    <div fxFlex="0 2"></div>
-    <div fxFlex="2 auto">
-      <h2>Releases</h2>
-        <mat-nav-list class='border-list' fxLayout="column" fxLayoutGap="20px">
-          <mat-list-item *ngFor='let v of docsInfo.versions'>
-            <a [routerLink]="['/docs/', v.name]"
-              routerLinkActive='active'>
-              <div fxLayout="row" fxLayoutAlign="start center"
-                   fxLayoutGap="20px">
-                <span style="font-weight:400">{{v.name | titlecase}}</span>
-                <mat-chip-list>
-                  <mat-chip class='primary' *ngIf="v.lts" title="Long Term Support">LTS</mat-chip>
-                  <mat-chip class='warn' *ngIf="v.eol" title="End Of Life">EOL</mat-chip>
-                </mat-chip-list>
-              </div>
-              <div matLine style="font-weight: 200">{{v.description}}</div>
-            </a>
-          </mat-list-item>
-        </mat-nav-list>
-    </div>
-
-    <div fxFlex="2 auto">
-      <h2>Libraries</h2>
-      <mat-nav-list class='border-list'>
-        <span *ngFor='let lib of libsService.libraries'>
-          <a mat-list-item  *ngIf='lib.versions.length > 0'
-            href='https://gazebosim.org/libs/{{lib.name | lowercase}}'>{{lib.name | titlecase}}</a>
-        </span>
-      </mat-nav-list>
-
-    </div>
-    <div fxFlex="0 2"></div>
-  </div>
-  -->
 </div>
