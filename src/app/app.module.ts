@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, SecurityContext } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -8,6 +8,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -31,6 +33,7 @@ import { HomeComponent } from './home';
 import { ShowcaseComponent } from './showcase';
 import { SupportComponent } from './support';
 import { ListedFilterPipe } from './doc/listed-filter.pipe';
+import { SafePipe } from './doc/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import { ListedFilterPipe } from './doc/listed-filter.pipe';
     HomeComponent,
     ShowcaseComponent,
     SupportComponent,
+    SafePipe,
   ],
   imports: [
     AppRoutingModule,
@@ -56,19 +60,23 @@ import { ListedFilterPipe } from './doc/listed-filter.pipe';
       markedOptions: {
         provide: MarkedOptions,
         useValue: {
-          sanitize: false,
+          sanitize: SecurityContext.NONE,
           gfm: true,
           breaks: false,
-          baseUrl: 'docs/',
+          smartLists: true,
+          smartypants: false,
+          //baseUrl: 'docs/',
         },
       },
     }),
     MatChipsModule,
     MatDialogModule,
+    MatFormFieldModule,
     MatIconModule,
     MatListModule,
     MatMenuModule,
     MatToolbarModule,
+    MatSelectModule,
     MatSnackBarModule,
     NgxGalleryModule,
   ],

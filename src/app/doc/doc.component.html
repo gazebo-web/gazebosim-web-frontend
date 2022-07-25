@@ -1,8 +1,38 @@
 <div fxLayout='column' fxLayoutGap='40px'>
-  <div class='heading'>
+  <div class='heading version'>
     <h1>Gazebo Documentation</h1>
-    <p></p>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Distribution</mat-label>
+      <mat-select [(value)]="version" (selectionChange)="onVersionChange($event.value)">
+        <mat-option></mat-option>
+        <mat-option [value]="dist.name" *ngFor="let dist of docsInfo.versions">{{ dist.name }}</mat-option>
+      </mat-select>
+  </mat-form-field>
+
+    <p><a routerLink='/docs'>Docs</a> / Gazebo <span *ngIf='version !== "all"'>{{version | titlecase}}</span></p>
   </div>
+
+  <div fxLayout='row'>
+    <div fxLayout='column'>
+      <ul>
+        <li *ngFor="let page of pages | gzListedFilter" class="docs-card"><a [routerLink]="[page.link]">{{page.title | titlecase}}</a>
+        </li>
+      </ul>
+    </div>
+    <div fxLayout='row'>
+      <div markdown [data]="docContent" class="markdown-content"></div>
+  
+      <div style="padding-right: 40px;">
+        <a mat-icon-button title='Edit on GitHub'
+          href='https://github.com/gazebosim/docs/blob/master/{{editLink}}'>
+        <mat-icon aria-hidden="false" fontIcon="create"></mat-icon>
+        </a>
+      </div>
+      </div>
+  </div>
+
+  <!--
 
   <div class='card-container'>
     <div *ngFor="let doc of docsInfo.pages['all'] | gzListedFilter" class="docs-card">
@@ -51,4 +81,5 @@
     </div>
     <div fxFlex="0 2"></div>
   </div>
+  -->
 </div>

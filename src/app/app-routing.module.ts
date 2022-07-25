@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'docs/:version',
-    component: DocVersionComponent,
+    component: DocComponent,
     resolve: {
       docsInfo: DocsResolver
     }
@@ -38,7 +38,7 @@ const routes: Routes = [
   {
     // Gets the page associated with a specific version
     path: 'docs/:version/:page',
-    component: DocVersionComponent,
+    component: DocComponent,
     resolve: {
       docsInfo: DocsResolver
     }
@@ -74,7 +74,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {anchorScrolling: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
