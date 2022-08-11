@@ -195,7 +195,17 @@ export class DocComponent implements OnInit, AfterViewChecked {
       }
 
       try {
-        this.editLink = this.version.name + '/' + this.page.file;
+        let isAll = false;
+        for (let pageIndex in this.docsInfo.pages['all']) {
+          if (this.page.file === this.docsInfo.pages['all'][pageIndex].file) {
+            isAll = true;
+          }
+        }
+        if (isAll) {
+          this.editLink = this.page.file;
+        } else {
+          this.editLink = this.version.name + '/' + this.page.file;
+        }
       } catch (err) {
         this.router.navigate(['/not-found']);
         return true;
