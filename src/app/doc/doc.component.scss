@@ -115,6 +115,10 @@ mat-tree-node button {
   min-width: 24px;
 }
 
+/*mat-tree-node a.active {
+  color: #ff00ff;
+}*/
+
 .release {
   .mat-form-field-label, .mat-form-field-outline,
   .mat-select-value, .mat-select-arrow {

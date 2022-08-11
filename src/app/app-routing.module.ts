@@ -5,6 +5,7 @@ import { DocComponent,
          DocVersionComponent,
          DocsResolver } from './doc';
 import { HomeComponent } from './home';
+import { LibComponent } from './lib';
 import { LibsComponent } from './libs';
 import { MediaComponent } from './media';
 import { FeaturesComponent } from './features';
@@ -52,8 +53,12 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'libs/:lib',
+    path: 'libs',
     component: LibsComponent,
+  },
+  {
+    path: 'libs/:lib',
+    component: LibComponent,
   },
   {
     path: 'media',

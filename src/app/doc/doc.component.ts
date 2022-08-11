@@ -70,7 +70,7 @@ export class DocComponent implements OnInit, AfterViewChecked {
               private markdownService: MarkdownService,
               private titleService: Title,
               private meta: Meta,
-              private router: Router,
+              public router: Router,
               private viewportScroller: ViewportScroller) {
 
     // Render images from the server.
@@ -138,6 +138,7 @@ export class DocComponent implements OnInit, AfterViewChecked {
 
     // Get all the documentation
     this.docsInfo = this.route.snapshot.data['docsInfo'];
+    console.log(this.docsInfo);
 
     this.route.fragment.subscribe((fragment) => {
       this.fragment = fragment!;
@@ -153,6 +154,7 @@ export class DocComponent implements OnInit, AfterViewChecked {
       this.massageDocs();
 
       this.dataSource.data = this.pages;
+      console.log('URL', this.router.url);
 
       // Expand the tree if a child node was selected
       this.dataSource.data.forEach(node => {
@@ -301,14 +303,15 @@ export class DocComponent implements OnInit, AfterViewChecked {
       (libs) => {
         if (libs.length > 0) {
           let libsPage = new Page;
-          libsPage.name = 'Libraries';
-          libsPage.title = 'Libraries';
+          libsPage.name = 'Library Reference';
+          libsPage.title = 'Library Reference';
           libsPage.link = '/docs/libs';
           libsPage.unlisted = false;
           libsPage.version = this.version.name;
           libsPage.children = [];
           this.pages.push(libsPage);
           libs.forEach(lib => {
+            console.log(lib);
             let libPage = new Page;
             libPage.name = lib.name;
             libPage.title = lib.name;

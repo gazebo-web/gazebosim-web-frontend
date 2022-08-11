@@ -25,7 +25,8 @@
       <mat-tree [dataSource]='dataSource' [treeControl]='treeControl'>
         <mat-tree-node *matTreeNodeDef='let node' matTreeNodePadding>
           <div style='width: 36px!important'></div>
-          <a [routerLink]="[node.link]">{{node.name | titlecase}}</a>
+          <a [routerLink]="[node.link]" class='active' *ngIf="node.link === router.url">{{node.name | titlecase}}</a>
+          <a [routerLink]="[node.link]" *ngIf="node.link !== router.url">{{node.name | titlecase}}</a>
         </mat-tree-node>
         <!-- This is the tree node template for expandable nodes -->
         <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
@@ -35,7 +36,8 @@
               {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
           </button>
-          <a [routerLink]="[node.link]">{{node.name | titlecase}}</a>
+          <a [routerLink]="[node.link]" class='active' *ngIf="node.link === router.url">{{node.name | titlecase}}</a>
+          <a [routerLink]="[node.link]" *ngIf="node.link !== router.url">{{node.name | titlecase}}</a>
         </mat-tree-node>
       </mat-tree>
     </div>
@@ -43,7 +45,7 @@
     <div fxLayout='row'>
       <div markdown [data]="docContent" class="markdown-content"></div>
   
-      <div style="padding-right: 40px;">
+      <div style="padding-right: 40px; padding-top: 20px;">
         <a mat-icon-button title='Edit on GitHub'
           href='https://github.com/gazebosim/docs/blob/master/{{editLink}}'>
         <mat-icon aria-hidden="false" fontIcon="create"></mat-icon>

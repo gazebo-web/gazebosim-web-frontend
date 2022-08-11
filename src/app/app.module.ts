@@ -11,12 +11,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { DocComponent,
 import { DocService } from './doc/doc.service';
 import { ErrorInterceptor } from './error-interceptor';
 import { FeaturesComponent } from './features';
+import { LibComponent } from './lib';
 import { LibsComponent } from './libs';
 import { LibsService } from './libs';
 import { MediaComponent } from './media';
@@ -43,6 +45,7 @@ import { SafePipe } from './doc/safe.pipe';
     DocComponent,
     DocVersionComponent,
     FeaturesComponent,
+    LibComponent,
     LibsComponent,
     ListedFilterPipe,
     MediaComponent,
@@ -76,6 +79,7 @@ import { SafePipe } from './doc/safe.pipe';
     MatIconModule,
     MatListModule,
     MatMenuModule,
+    MatTabsModule,
     MatToolbarModule,
     MatTreeModule,
     MatSelectModule,
