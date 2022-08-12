@@ -155,6 +155,15 @@ a.mat-menu-item > mat-icon {
   margin-top: 64px;
 }
 
+footer {
+  text-align: center;
+}
+
+footer.docs {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+}
+
 @media screen and (max-width: 600px) {
   .heading h1 {
     font-size: 24px;
@@ -162,14 +171,11 @@ a.mat-menu-item > mat-icon {
   .heading p {
     font-size: 12px;
   }
-}
 
-footer {
-  text-align: center;
-}
-
-footer.docs {
-  margin-left: 280px;
+  footer.docs {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+  }
 }
 
 #html-spinner,
