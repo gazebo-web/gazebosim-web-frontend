@@ -3,10 +3,10 @@ export class Version {
   public lts: boolean = false;
   public eol: boolean = false;
   public description: string = ''; 
+  public libraries: LibraryVersion[] = [];
 }
 
-/*
-constructor(json: any) {
-  this.lts = json['lts'];
-  this.eol = json['eol'];
-  }*/
+export class LibraryVersion {
+  public name: string = '';
+  public version: number = 0;
+}

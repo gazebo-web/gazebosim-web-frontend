@@ -4,5 +4,7 @@ export class Page {
   public file: string = '';
   public description: string = '';
   public unlisted: boolean = false;
-  public children: Page[] = [];
+  public children?: Page[] = [];
+  public link: string = '';
+  public version: string = '';
 }

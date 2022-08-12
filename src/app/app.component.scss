@@ -18,6 +18,9 @@
   height: 64px;
   min-height: 64px;
   z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .mat-stroked-button {
@@ -48,9 +51,6 @@
 
 .mat-toolbar .moreButton  {
   cursor: pointer;
-}
-
-.page-content {
 }
 
 .stroked-button {

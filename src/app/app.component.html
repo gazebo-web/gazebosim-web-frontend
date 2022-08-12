@@ -44,12 +44,13 @@
     <a mat-menu-item href="{{appHost}}" class="stroked-button-menu">App</a>
   </mat-menu>
 
-  <div class='page-content'>
+  <div class="page-content">
     <router-outlet></router-outlet>
   </div>
+
 </div>
 
-<footer class='mat-typography'>
+<footer class='mat-typography {{docs ? "docs" : ""}}'>
   <p>
   Brought to you by <a class='dark' href='https://openrobotics.org'>Open Robotics</a>.
   </p>
