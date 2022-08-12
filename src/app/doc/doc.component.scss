@@ -161,15 +161,18 @@ p {
   text-align:right;
 }
 
-mat-chip.primary {
+mat-chip.primary, mat-chip.primary:hover {
+  border-radius: 4px;
   background-color: mat-color($custom-theme-primary, 600)!important;
   color: #ffffff!important;
-  font-weight: 300;
+  font-weight: 400;
 }
+
 mat-chip.warn {
-  background-color: mat-color($custom-theme-warn, 600)!important;
+  border-radius: 4px;
+  background-color: mat-color($custom-theme-warn, 800)!important;
   color: #ffffff!important;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 mat-tree-node {
