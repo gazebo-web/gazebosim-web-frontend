@@ -345,7 +345,7 @@ export class DocComponent implements OnInit, AfterViewChecked {
           let libPage = new Page;
           libPage.name = this.docsInfo.versions[v].libraries[lib].name;
           libPage.title = libPage.name;
-          libPage.link = '/api/' + libPage.name + '/' + this.docsInfo.versions[v].libraries[lib].version;
+          libPage.link = 'https://gazebosim.org/api/' + libPage.name + '/' + this.docsInfo.versions[v].libraries[lib].version;
           libPage.unlisted = false;
           libPage.version = this.version.name;
           libsPage.children!.push(libPage);
