@@ -20,6 +20,13 @@ interface PageFlatNode {
   link: string;
 }
 
+interface TocItem {
+  url: string;
+  name: string;
+  level: string;
+  fragment: string;
+}
+
 @Component({
   selector: 'gz-doc',
   templateUrl: 'doc.component.html',
@@ -35,8 +42,9 @@ export class DocComponent implements OnInit, AfterViewChecked {
   public docsInfo: DocsInfo;
   public editLink: string = '';
   public pages: Page[] = [];
+  public toc: TocItem[] = [];
   private page: Page;
-  private fragment: string = '';
+  public fragment: string = '';
 
   private pageOrder: string[] = ['getstarted', 'install', 'tutorials'];
 
@@ -100,9 +108,20 @@ export class DocComponent implements OnInit, AfterViewChecked {
     // Render header anchors
     this.markdownService.renderer.heading = (text: string, level: number) => {
       const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      const href = 'docs/' + this.version.name + '/' + this.page.name + '#' + escapedText;
+
+      if (level <= 3) {
+        let tocItem: TocItem = {
+          name: text,
+          url: href,
+          level: "h"+level,
+          fragment: escapedText
+        };
+        this.toc.push(tocItem);
+      }
+
       return '<h' + level + '  id="' + escapedText + '" class="heading-anchor">' +  text +
-        '<a name="' + escapedText + '" class="anchor" title="Link to this heading" href="docs/'
-          + this.page.version + '/' + this.page.name + '#' + escapedText + '">' +
+        '<a name="' + escapedText + '" class="anchor" title="Link to this heading" href="'+href + '">' +
           '<span style="padding-left:4px" \
             id="heading-anchor-img"><img \
               src="/assets/icon/baseline-link-24px.svg"></img></span> \
@@ -131,6 +150,7 @@ export class DocComponent implements OnInit, AfterViewChecked {
   }
 
   public ngOnInit(): void {
+
     this.titleService.setTitle('Docs -- Gazebo');
     this.meta.updateTag({name: 'title', content: 'Docs -- Gazebo'});
     this.meta.updateTag({name: 'description',
@@ -138,7 +158,6 @@ export class DocComponent implements OnInit, AfterViewChecked {
 
     // Get all the documentation
     this.docsInfo = this.route.snapshot.data['docsInfo'];
-    console.log(this.docsInfo);
 
     this.route.fragment.subscribe((fragment) => {
       this.fragment = fragment!;
@@ -154,7 +173,6 @@ export class DocComponent implements OnInit, AfterViewChecked {
       this.massageDocs();
 
       this.dataSource.data = this.pages;
-      console.log('URL', this.router.url);
 
       // Expand the tree if a child node was selected
       this.dataSource.data.forEach(node => {
@@ -220,17 +238,12 @@ export class DocComponent implements OnInit, AfterViewChecked {
   }
 
   public ngAfterViewChecked(): void {
+
     try {
       if (this.fragment) {
         const elem = document.querySelector('#' + this.fragment);
         if (elem !== undefined && elem !== null) {
-          setTimeout(() => {
-            elem.scrollIntoView({behavior: 'smooth', block: 'start'});
-          }, 100);
-          // this.viewportScroller.scrollToAnchor(this.fragment);
-          // Clear the fragment, otherwise clicking on another button will just
-          // reload the page to the current fragment.
-          this.fragment = '';
+          elem.scrollIntoView({behavior: 'smooth', block: 'start'});
         }
       }
     } catch (e) {
@@ -273,6 +286,8 @@ export class DocComponent implements OnInit, AfterViewChecked {
   }
 
   private massageDocs(): void {
+
+    this.toc.splice(0);
     this.pages = [];
 
     // Create links for all the documentation pages.
@@ -321,7 +336,6 @@ export class DocComponent implements OnInit, AfterViewChecked {
           libsPage.children = [];
           this.pages.push(libsPage);
           libs.forEach(lib => {
-            console.log(lib);
             let libPage = new Page;
             libPage.name = lib.name;
             libPage.title = lib.name;

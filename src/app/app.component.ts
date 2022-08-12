@@ -23,6 +23,8 @@ export class AppComponent {
    */
   public readonly title = 'Gazebo';
 
+  public home: boolean = true;
+
   /**
    * Indicates whether a route is being resolved or not.
    */
@@ -47,6 +49,7 @@ export class AppComponent {
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        this.home = event.url === "/home" || event.url === "/"; 
         gtag('config', environment.GA_TRACKING_ID, {
             page_path: event.urlAfterRedirects
         });

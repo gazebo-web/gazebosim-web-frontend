@@ -124,7 +124,7 @@ a.mat-menu-item > mat-icon {
   flex-direction: column;
   align-items: center;
   background-color: mat-color($custom-theme-primary, 300);
-  padding: 80px 40px;
+  padding: 40px 40px;
   margin-bottom: 40px;
 }
 
@@ -132,7 +132,7 @@ a.mat-menu-item > mat-icon {
   color: rgb(255, 255, 255);
   font-weight: 400;
   font-size: 42px;
-  line-height: 1em;
+  line-height: 42px;
 }
 
 .heading h1 a, .heading p a {
@@ -148,14 +148,11 @@ a.mat-menu-item > mat-icon {
   color: rgb(255, 255, 255);
   font-size: 20px;
   min-height: 1em;
-  line-height: 1em;
   text-align: center;
 }
 
-.heading h1 {
-  color: rgb(255, 255, 255);
-  font-weight: 400;
-  font-size: 42px;
+.page-content {
+  margin-top: 64px;
 }
 
 #html-spinner,

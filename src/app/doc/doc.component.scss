@@ -4,11 +4,23 @@ strong {
   font-weight: 500;
 }
 
+.docHeading {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  margin: 0;
+  height: 120px;
+  min-height: 120px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
 .heading.version {
   padding: 20px 40px;
   align-items: start;
   justify-content: center;
   margin-bottom: 0!important;
+  line-height: 1em;
 }
 .heading.version small {
   color: #ffffff;
@@ -40,6 +52,7 @@ strong {
 
 .markdown-content {
   padding: 40px 40px;
+  scroll-padding-top: 200px;
 }
 
 
@@ -54,6 +67,10 @@ strong {
 
 #links {
   margin-bottom: 20px;
+}
+
+.heading-anchor {
+  scroll-margin-top: 200px;
 }
 
 .heading-anchor:hover #heading-anchor-img {
@@ -80,7 +97,7 @@ h4 {
 }
 
 p {
-  width: 50%;
+  width: 100%;
 }
 
 .header-link {
@@ -115,10 +132,6 @@ mat-tree-node button {
   min-width: 24px;
 }
 
-/*mat-tree-node a.active {
-  color: #ff00ff;
-}*/
-
 .release {
   .mat-form-field-label, .mat-form-field-outline,
   .mat-select-value, .mat-select-arrow {
@@ -128,4 +141,45 @@ mat-tree-node button {
 
 .menu-lts {
   font-size: 80%;
+}
+
+.toc-list {
+  list-style-type: none;
+  min-width: 220px;
+  padding-inline-start: 0px;
+}
+
+.toc-list-item {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-left: 1px solid rgb(219, 219, 219);
+}
+
+.toc-list-item.h1:after {
+  width: 40%;
+  display: block;
+  height: 1px;
+  clear: both;
+  content: "";
+  background-color: rgb(219, 219, 219);
+  margin: 10px 0 4px;
+}
+
+.toc-list-item.h3 {
+  padding-left: 20px!important;
+}
+
+.toc-list-item a {
+  color: #5e5e5e;
+}
+
+.toc-list-item:hover, .toc-list-item.active {
+  border-left: 1px solid mat-color($custom-theme-primary, 600);
+  color: mat-color($custom-theme-primary, 600)!important;
+}
+
+.toc-list-item:hover a, .toc-list-item.active a {
+  color: mat-color($custom-theme-primary, 600)!important;
+  font-weight: 500;
 }

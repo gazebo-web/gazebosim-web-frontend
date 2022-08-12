@@ -1,27 +1,31 @@
-<div fxLayout='column' fxLayoutGap='40px'>
-  <div class='heading version'>
-    <div fxLayout="row" fxFill fxLayoutAlign="space-between center">
-      <div fxLayout="row" fxLayoutGap="20">
-        <div fxLayout="column">
-          <h1>Docs / Gazebo {{version.name | titlecase}}</h1>
-          <small>{{version.description}}</small>
-        </div>
-        <mat-chip-list>
-          <mat-chip *ngIf="version.lts" class='primary' title='Long Term Support'>LTS</mat-chip>
-          <mat-chip *ngIf="version.eol" class='warn' title='End Of Life'>EOL</mat-chip></mat-chip-list>
-      </div>
+<div fxLayout='column'>
 
-      <mat-form-field appearance="outline" class='release'>
-        <mat-label>Release</mat-label>
-        <mat-select [(value)]="version.name" (selectionChange)="onVersionChange($event.value)">
-          <mat-option [value]="dist.name" *ngFor="let dist of docsInfo.versions">{{ dist.name | titlecase }} <span *ngIf="dist.lts" class='menu-lts'>(LTS)</span><span *ngIf="dist.eol" class='menu-lts'>(EOL)</span></mat-option>
-        </mat-select>
-      </mat-form-field>
+  <div class="docHeading">
+    <div class='heading version'>
+      <div fxLayout="row" fxFill fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutGap="20">
+          <div fxLayout="column">
+            <h1>Docs / Gazebo {{version.name | titlecase}}</h1>
+            <small>{{version.description}}</small>
+          </div>
+          <mat-chip-list>
+            <mat-chip *ngIf="version.lts" class='primary' title='Long Term Support'>LTS</mat-chip>
+            <mat-chip *ngIf="version.eol" class='warn' title='End Of Life'>EOL</mat-chip></mat-chip-list>
+        </div>
+  
+        <mat-form-field appearance="outline" class='release'>
+          <mat-label>Release</mat-label>
+          <mat-select [(value)]="version.name" (selectionChange)="onVersionChange($event.value)">
+            <mat-option [value]="dist.name" *ngFor="let dist of docsInfo.versions">{{ dist.name | titlecase }} <span *ngIf="dist.lts" class='menu-lts'>(LTS)</span><span *ngIf="dist.eol" class='menu-lts'>(EOL)</span></mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </div>
 
-  <div fxLayout='row'>
-    <div fxLayout='column' fxFlex="280px" style="background-color: #f8f9fa; border-right: 1px solid #dedede">
+  <div fxLayout='row' style="margin-top: 118px; border: 0;">
+    <div fxLayout='column' fxFlex="280px"
+         style="background-color: #f8f9fa; border-right: 1px solid #dedede; position: fixed; height: 100%">
       <mat-tree [dataSource]='dataSource' [treeControl]='treeControl'>
         <mat-tree-node *matTreeNodeDef='let node' matTreeNodePadding>
           <div style='width: 36px!important'></div>
@@ -42,16 +46,23 @@
       </mat-tree>
     </div>
 
-    <div fxLayout='row'>
+    <div fxLayout='row' fxFlex="auto" style="margin-left:280px; padding-right: 220px">
       <div markdown [data]="docContent" class="markdown-content"></div>
-  
-      <div style="padding-right: 40px; padding-top: 20px;">
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="20px" fxFlex="220px" style="position: fixed; right: 0px; overflow-wrap: break-word">
+      <div style="padding-right: 40px; padding-top: 20px;text-align:right">
         <a mat-icon-button title='Edit on GitHub'
           href='https://github.com/gazebosim/docs/blob/master/{{editLink}}'>
         <mat-icon aria-hidden="false" fontIcon="create"></mat-icon>
         </a>
       </div>
+      <div>
+        <ul class='toc-list'>
+          <li *ngFor="let t of toc" class='toc-list-item {{t.level}} {{t.fragment === fragment ? "active" : ""}}'><a href="{{t.url}}">{{t.name}}</a></li>
+        </ul>
       </div>
-  </div>
+    </div>
 
+  </div>
 </div>
