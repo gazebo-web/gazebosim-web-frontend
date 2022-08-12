@@ -20,7 +20,6 @@ strong {
   align-items: start;
   justify-content: center;
   margin-bottom: 0!important;
-  line-height: 1em;
 }
 .heading.version small {
   color: #ffffff;
@@ -52,6 +51,7 @@ strong {
 
 .markdown-content {
   padding: 40px 40px;
+  padding-top: 0px;
   scroll-padding-top: 200px;
 }
 
@@ -106,6 +106,60 @@ p {
 
 .active {
   color: mat-color($custom-theme-accent, 600)!important;
+}
+
+.docBody {
+  margin-top: 118px;
+}
+
+.docNavTree {
+  background-color: #f8f9fa;
+  border-right: 1px solid #dedede;
+  position: fixed;
+  height: 100%;
+  width: 280px;
+}
+
+.docMarkdown {
+  margin-left:280px;
+  padding-right: 220px;
+}
+
+@media screen and (max-width: 960px) {
+  .docMarkdown {
+    margin-left:280px;
+    padding-right: 0px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .docMarkdown {
+    margin-left:200px;
+  }
+  .docNavTree {
+    width: 200px;
+  }
+  .markdown-content {
+    padding-right: 0px
+  }
+  .heading.version h1 {
+    font-size: 18px; 
+  }
+  .docBody {
+    margin-top: 120px;
+  }
+}
+
+.tocContainer {
+  position: fixed;
+  right: 0px;
+  overflow-wrap: break-word
+}
+
+.editButtonContainer {
+  padding-top: 10px;
+  padding-right: 40px;
+  text-align:right;
 }
 
 mat-chip.primary {
@@ -174,12 +228,22 @@ mat-tree-node button {
   color: #5e5e5e;
 }
 
-.toc-list-item:hover, .toc-list-item.active {
+.toc-list-item:hover {
   border-left: 1px solid mat-color($custom-theme-primary, 600);
   color: mat-color($custom-theme-primary, 600)!important;
 }
 
-.toc-list-item:hover a, .toc-list-item.active a {
+.toc-list-item:hover a {
   color: mat-color($custom-theme-primary, 600)!important;
+  font-weight: 500;
+}
+
+.toc-list-item.active {
+  border-left: 1px solid mat-color($custom-theme-accent, 600);
+  color: mat-color($custom-theme-accent, 600)!important;
+}
+
+.toc-list-item.active a {
+  color: mat-color($custom-theme-accent, 600)!important;
   font-weight: 500;
 }

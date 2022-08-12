@@ -43,8 +43,9 @@ export class DocComponent implements OnInit, AfterViewChecked {
   public editLink: string = '';
   public pages: Page[] = [];
   public toc: TocItem[] = [];
-  private page: Page;
   public fragment: string = '';
+  public baseUrl: string;
+  private page: Page;
 
   private pageOrder: string[] = ['getstarted', 'install', 'tutorials'];
 
@@ -287,8 +288,11 @@ export class DocComponent implements OnInit, AfterViewChecked {
 
   private massageDocs(): void {
 
+    this.baseUrl = this.urlWithoutParams();
+
+    // Clear the table of contents and pages
     this.toc.splice(0);
-    this.pages = [];
+    this.pages.splice(0);
 
     // Create links for all the documentation pages.
     for (let refName in this.docsInfo.pages) {
@@ -324,32 +328,40 @@ export class DocComponent implements OnInit, AfterViewChecked {
     this.pages = this.pages.concat(tmpPages);
 
     // Add in the libraries
-    this.libsService.libs().subscribe(
-      (libs) => {
-        if (libs.length > 0) {
-          let libsPage = new Page;
-          libsPage.name = 'Library Reference';
-          libsPage.title = 'Library Reference';
-          libsPage.link = '/docs/libs';
-          libsPage.unlisted = false;
-          libsPage.version = this.version.name;
-          libsPage.children = [];
-          this.pages.push(libsPage);
-          libs.forEach(lib => {
-            let libPage = new Page;
-            libPage.name = lib.name;
-            libPage.title = lib.name;
-            libPage.link = '/libs/' + lib.name;
-            libPage.unlisted = false;
-            libPage.version = this.version.name;
-            libsPage.children!.push(libPage);
-          });
-          this.dataSource.data = this.pages;
+    for (let v in this.docsInfo.versions) {
+      if (this.docsInfo.versions[v].name == this.version.name) {
+        let libsPage = new Page;
+        libsPage.name = 'Library Reference';
+        libsPage.title = 'Library Reference';
+        libsPage.link = '';
+        libsPage.unlisted = false;
+        libsPage.version = this.version.name;
+        libsPage.children = [];
+        this.pages.push(libsPage);
+
+        for (let lib in this.docsInfo.versions[v].libraries) {
+          let libPage = new Page;
+          libPage.name = this.docsInfo.versions[v].libraries[lib].name;
+          libPage.title = libPage.name;
+          libPage.link = '/api/' + libPage.name + '/' + this.docsInfo.versions[v].libraries[lib].version;
+          libPage.unlisted = false;
+          libPage.version = this.version.name;
+          libsPage.children!.push(libPage);
         }
-    });
+
+        break;
+      }
+    }
   }
 
   // Used to determine if the navigation tree on the left side should have
   // an expand icon or not. 
   public hasChild = (_: number, node: PageFlatNode) => node.expandable;
+
+  public urlWithoutParams(): string {
+    let urlTree = this.router.parseUrl(this.router.url);
+    urlTree.queryParams = {};
+    urlTree.fragment = null; // optional
+    return urlTree.toString();
+  }
 }

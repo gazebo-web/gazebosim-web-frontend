@@ -50,6 +50,7 @@ $custom-typography: mat-typography-config(
 @include angular-material-theme($custom-theme);
 @include angular-material-typography($custom-typography);
 
+
 // Custom styles
 html, body {
   margin: 0;
@@ -132,7 +133,6 @@ a.mat-menu-item > mat-icon {
   color: rgb(255, 255, 255);
   font-weight: 400;
   font-size: 42px;
-  line-height: 42px;
 }
 
 .heading h1 a, .heading p a {
@@ -153,6 +153,23 @@ a.mat-menu-item > mat-icon {
 
 .page-content {
   margin-top: 64px;
+}
+
+@media screen and (max-width: 600px) {
+  .heading h1 {
+    font-size: 24px;
+  }
+  .heading p {
+    font-size: 12px;
+  }
+}
+
+footer {
+  text-align: center;
+}
+
+footer.docs {
+  margin-left: 280px;
 }
 
 #html-spinner,

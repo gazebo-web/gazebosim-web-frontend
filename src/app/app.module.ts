@@ -23,7 +23,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about';
 import { DocComponent,
-         DocVersionComponent,
          DocsResolver } from './doc';
 import { DocService } from './doc/doc.service';
 import { ErrorInterceptor } from './error-interceptor';
@@ -43,7 +42,6 @@ import { SafePipe } from './doc/safe.pipe';
     AppComponent,
     AboutComponent,
     DocComponent,
-    DocVersionComponent,
     FeaturesComponent,
     LibComponent,
     LibsComponent,

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about';
 import { DocComponent,
-         DocVersionComponent,
          DocsResolver } from './doc';
 import { HomeComponent } from './home';
 import { LibComponent } from './lib';

@@ -2,13 +2,13 @@
 
   <div class="docHeading">
     <div class='heading version'>
-      <div fxLayout="row" fxFill fxLayoutAlign="space-between center">
+      <div fxLayout.gt-xs="row" fxLayout.lt-sm="column" fxFill fxLayoutAlign.gt-xs="space-between center" fxLayoutAlign.lt-sm="space-between start">
         <div fxLayout="row" fxLayoutGap="20">
           <div fxLayout="column">
             <h1>Docs / Gazebo {{version.name | titlecase}}</h1>
-            <small>{{version.description}}</small>
+            <small fxHide.lt-sm>{{version.description}}</small>
           </div>
-          <mat-chip-list>
+          <mat-chip-list fxHide.lt-md>
             <mat-chip *ngIf="version.lts" class='primary' title='Long Term Support'>LTS</mat-chip>
             <mat-chip *ngIf="version.eol" class='warn' title='End Of Life'>EOL</mat-chip></mat-chip-list>
         </div>
@@ -23,14 +23,13 @@
     </div>
   </div>
 
-  <div fxLayout='row' style="margin-top: 118px; border: 0;">
-    <div fxLayout='column' fxFlex="280px"
-         style="background-color: #f8f9fa; border-right: 1px solid #dedede; position: fixed; height: 100%">
+  <div fxLayout='row' class="docBody">
+    <div fxLayout='column' class="docNavTree">
       <mat-tree [dataSource]='dataSource' [treeControl]='treeControl'>
         <mat-tree-node *matTreeNodeDef='let node' matTreeNodePadding>
           <div style='width: 36px!important'></div>
-          <a [routerLink]="[node.link]" class='active' *ngIf="node.link === router.url">{{node.name | titlecase}}</a>
-          <a [routerLink]="[node.link]" *ngIf="node.link !== router.url">{{node.name | titlecase}}</a>
+          <a [routerLink]="[node.link]" class='active' *ngIf="baseUrl === node.link">{{node.name | titlecase}}</a>
+          <a [routerLink]="[node.link]" *ngIf="baseUrl !== node.link">{{node.name | titlecase}}</a>
         </mat-tree-node>
         <!-- This is the tree node template for expandable nodes -->
         <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
@@ -40,29 +39,29 @@
               {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
           </button>
-          <a [routerLink]="[node.link]" class='active' *ngIf="node.link === router.url">{{node.name | titlecase}}</a>
-          <a [routerLink]="[node.link]" *ngIf="node.link !== router.url">{{node.name | titlecase}}</a>
+          <a [routerLink]="[node.link]" class='active' *ngIf="node.link !== '' && baseUrl === node.link">{{node.name | titlecase}}</a>
+          <a [routerLink]="[node.link]" *ngIf="node.link !== '' && baseUrl !== node.link">{{node.name | titlecase}}</a>
+          <span *ngIf="node.link === ''">{{node.name | titlecase}}</span>
         </mat-tree-node>
       </mat-tree>
     </div>
 
-    <div fxLayout='row' fxFlex="auto" style="margin-left:280px; padding-right: 220px">
+    <div fxLayout='column' fxFlex="auto" class="docMarkdown">
+      <div class="editButtonContainer">
+        <a mat-icon-button title='Edit on GitHub'
+          href='https://github.com/gazebosim/docs/blob/master/{{editLink}}'>
+        <mat-icon style="font-size: 18px" aria-hidden="false" fontIcon="create"></mat-icon>
+        </a>
+      </div>
+
+
       <div markdown [data]="docContent" class="markdown-content"></div>
     </div>
 
-    <div fxLayout="column" fxLayoutGap="20px" fxFlex="220px" style="position: fixed; right: 0px; overflow-wrap: break-word">
-      <div style="padding-right: 40px; padding-top: 20px;text-align:right">
-        <a mat-icon-button title='Edit on GitHub'
-          href='https://github.com/gazebosim/docs/blob/master/{{editLink}}'>
-        <mat-icon aria-hidden="false" fontIcon="create"></mat-icon>
-        </a>
-      </div>
-      <div>
+    <div fxLayout="column" fxLayoutGap="20px" fxFlex.gt-sm="220px" fxFlex.lt-md="auto" fxHide.lt-md class="tocContainer">
         <ul class='toc-list'>
           <li *ngFor="let t of toc" class='toc-list-item {{t.level}} {{t.fragment === fragment ? "active" : ""}}'><a href="{{t.url}}">{{t.name}}</a></li>
         </ul>
-      </div>
     </div>
-
   </div>
 </div>
