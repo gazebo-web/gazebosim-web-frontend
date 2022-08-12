@@ -18,7 +18,7 @@
         <mat-icon>code</mat-icon> Source Code</a>
 
       <span *ngIf="lib.versions.length > 0">
-        <a href="/api/{{lib.name | lowercase}}/{{lib.versions[0].major}}.{{lib.versions[0].minor}}/index.html" mat-button color="primary"><mat-icon>description</mat-icon>API & Tutorials</a>
+        <a href="/api/{{lib.name | lowercase}}/{{lib.versions[0].major}}/index.html" mat-button color="primary"><mat-icon>description</mat-icon>API & Tutorials</a>
       </span>
     </div>
 
@@ -43,8 +43,8 @@
 
             <tr *ngFor="let v of lib.versions">
               <td>{{v.major}}.{{v.minor}}.{{v.patch}}</td>
-              <td>{{v.releaseDate | amDateFormat:'LL'}}</td>
-              <td><a href="api/{{lib.name | lowercase}}/{{v.major}}.{{v.minor}}/index.html" mat-button color="primary"><mat-icon>description</mat-icon></a></td>
+              <td>{{v.releaseDate | date:'LL'}}</td>
+              <td><a href="api/{{lib.name | lowercase}}/{{v.major}}/index.html" mat-button color="primary"><mat-icon>description</mat-icon></a></td>
             </tr>
           </table>
         </div>

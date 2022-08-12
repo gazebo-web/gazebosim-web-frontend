@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about';
 import { DocComponent,
-         DocVersionComponent,
          DocsResolver } from './doc';
 import { HomeComponent } from './home';
+import { LibComponent } from './lib';
 import { LibsComponent } from './libs';
 import { MediaComponent } from './media';
 import { FeaturesComponent } from './features';
@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'docs/:version',
-    component: DocVersionComponent,
+    component: DocComponent,
     resolve: {
       docsInfo: DocsResolver
     }
@@ -38,7 +38,7 @@ const routes: Routes = [
   {
     // Gets the page associated with a specific version
     path: 'docs/:version/:page',
-    component: DocVersionComponent,
+    component: DocComponent,
     resolve: {
       docsInfo: DocsResolver
     }
@@ -52,8 +52,12 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'libs/:lib',
+    path: 'libs',
     component: LibsComponent,
+  },
+  {
+    path: 'libs/:lib',
+    component: LibComponent,
   },
   {
     path: 'media',
@@ -74,7 +78,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {anchorScrolling: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

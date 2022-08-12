@@ -1,5 +1,4 @@
-@import '~@angular/material/theming';
-@import '../../styles/custom-theme.scss';
+@import '../../styles.scss';
 
 a.mat-list-item {
   border-left: 2px solid rgba(241, 78, 35, 0);
@@ -7,12 +6,6 @@ a.mat-list-item {
 
 mat-sidenav-content {
   padding: 80px;
-}
-
-@media screen and (min-width: 480px) {
-  a.mat-list-item {
-    padding: 0px 80px;
-  }
 }
 
 .tab-body {

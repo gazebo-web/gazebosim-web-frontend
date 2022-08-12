@@ -25,7 +25,7 @@ export class LibComponent implements OnInit {
       // Render versioned links
       this.markdownService.renderer.link = (href: string, title: string, text: string) => {
         if (href.startsWith('#')) {
-          return '<a href="/libs/' + params.lib + href + '">' + text + '</a>';
+          return '<a href="/libs/' + params['lib'] + href + '">' + text + '</a>';
         }
         return '<a href="' + href + '" title="'
           + title + '">' + text + '</a>';
@@ -44,7 +44,7 @@ export class LibComponent implements OnInit {
         (libs) => {
           // Find the library that has been selected
           for (const l of libs) {
-            if (l.name.toLowerCase() === params.lib) {
+            if (l.name.toLowerCase() === params['lib']) {
               const stringTokens = l.repo.split('/');
               const libraryName = stringTokens[stringTokens.length - 1];
               if ( libraryName === 'sdformat') {
