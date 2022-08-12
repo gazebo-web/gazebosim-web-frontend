@@ -297,8 +297,10 @@ export class DocComponent implements OnInit, AfterViewChecked {
     // Create links for all the documentation pages.
     for (let refName in this.docsInfo.pages) {
       for (let pageIndex in this.docsInfo.pages[refName]) {
-        this.docsInfo.pages[refName][pageIndex].link='/docs/' + this.version.name
-        + '/' + this.docsInfo.pages[refName][pageIndex].name;
+
+        this.docsInfo.pages[refName][pageIndex].link = '/docs/' +
+        this.version.name + '/' +
+        this.docsInfo.pages[refName][pageIndex].name;
         this.docsInfo.pages[refName][pageIndex].version = refName;
 
         // Update child pages.

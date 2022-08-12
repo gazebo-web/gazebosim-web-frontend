@@ -39,9 +39,10 @@
               {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
           </button>
-          <a [routerLink]="[node.link]" class='active' *ngIf="node.link !== '' && baseUrl === node.link">{{node.name | titlecase}}</a>
-          <a [routerLink]="[node.link]" *ngIf="node.link !== '' && baseUrl !== node.link">{{node.name | titlecase}}</a>
-          <span *ngIf="node.link === ''">{{node.name | titlecase}}</span>
+          <a [routerLink]="[node.link]" *ngIf="node.link !== ''; else noLink" class='baseUrl === node.link ? "active" : ""'>{{node.name | titlecase}}</a>
+          <ng-template #noLink>
+            <span>{{node.name | titlecase}}</span>
+          </ng-template>
         </mat-tree-node>
       </mat-tree>
     </div>
