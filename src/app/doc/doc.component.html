@@ -28,8 +28,12 @@
       <mat-tree [dataSource]='dataSource' [treeControl]='treeControl'>
         <mat-tree-node *matTreeNodeDef='let node' matTreeNodePadding>
           <div style='width: 36px!important'></div>
-          <a [routerLink]="[node.link]" class='active' *ngIf="baseUrl === node.link">{{node.name | titlecase}}</a>
-          <a [routerLink]="[node.link]" *ngIf="baseUrl !== node.link">{{node.name | titlecase}}</a>
+
+          <a [routerLink]="[node.link]" class="{{baseUrl === node.link ? 'active' : ''}}" *ngIf="!node.link.includes('https:',0); else externalLink">{{node.name | titlecase}}</a>
+
+          <ng-template #externalLink>
+            <a href="{{node.link}}" *ngIf="baseUrl !== node.link">{{node.name | titlecase}}</a>
+          </ng-template>
         </mat-tree-node>
         <!-- This is the tree node template for expandable nodes -->
         <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
@@ -39,9 +43,10 @@
               {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
           </button>
-          <a [routerLink]="[node.link]" class='active' *ngIf="node.link !== '' && baseUrl === node.link">{{node.name | titlecase}}</a>
-          <a [routerLink]="[node.link]" *ngIf="node.link !== '' && baseUrl !== node.link">{{node.name | titlecase}}</a>
-          <span *ngIf="node.link === ''">{{node.name | titlecase}}</span>
+          <a [routerLink]="[node.link]" *ngIf="node.link !== ''; else noLink" class='{{baseUrl === node.link ? "active" : ""}}'>{{node.name | titlecase}}</a>
+          <ng-template #noLink>
+            <span>{{node.name | titlecase}}</span>
+          </ng-template>
         </mat-tree-node>
       </mat-tree>
     </div>

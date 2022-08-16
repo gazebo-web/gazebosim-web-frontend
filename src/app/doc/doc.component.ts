@@ -297,8 +297,10 @@ export class DocComponent implements OnInit, AfterViewChecked {
     // Create links for all the documentation pages.
     for (let refName in this.docsInfo.pages) {
       for (let pageIndex in this.docsInfo.pages[refName]) {
-        this.docsInfo.pages[refName][pageIndex].link='/docs/' + this.version.name
-        + '/' + this.docsInfo.pages[refName][pageIndex].name;
+
+        this.docsInfo.pages[refName][pageIndex].link = '/docs/' +
+        this.version.name + '/' +
+        this.docsInfo.pages[refName][pageIndex].name;
         this.docsInfo.pages[refName][pageIndex].version = refName;
 
         // Update child pages.
@@ -343,7 +345,7 @@ export class DocComponent implements OnInit, AfterViewChecked {
           let libPage = new Page;
           libPage.name = this.docsInfo.versions[v].libraries[lib].name;
           libPage.title = libPage.name;
-          libPage.link = '/api/' + libPage.name + '/' + this.docsInfo.versions[v].libraries[lib].version;
+          libPage.link = 'https://gazebosim.org/api/' + libPage.name + '/' + this.docsInfo.versions[v].libraries[lib].version;
           libPage.unlisted = false;
           libPage.version = this.version.name;
           libsPage.children!.push(libPage);
