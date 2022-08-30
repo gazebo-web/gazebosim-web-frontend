@@ -214,12 +214,22 @@ export class DocComponent implements OnInit, AfterViewChecked {
       }
 
       try {
-        let isAll = false;
-        for (let pageIndex in this.docsInfo.pages['all']) {
-          if (this.page.file === this.docsInfo.pages['all'][pageIndex].file) {
-            isAll = true;
+
+        // Check if the page is "all", so that edit links can be generated
+        // correctly.
+        let isAllFunc = (pages: Page[]): boolean => {
+          for (let pageIndex in pages) {
+            if (this.page.file === pages[pageIndex].file) {
+              return true;
+            } else if (pages[pageIndex].children && pages[pageIndex].children!.length > 0) {
+              return isAllFunc(pages[pageIndex].children!);
+            }
           }
+          return false;
         }
+
+        let isAll = isAllFunc(this.docsInfo.pages['all']);
+
         if (isAll) {
           this.editLink = this.page.file;
         } else {
