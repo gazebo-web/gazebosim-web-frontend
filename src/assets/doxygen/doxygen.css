@@ -552,3 +552,15 @@ h2.memtitle {
     border-bottom: 1px solid #eeeeee;
   }
 }
+
+blockquote.doxtable p {
+  display: inline;
+}
+
+blockquote.doxtable:before{
+  content: '';
+}
+
+blockquote.doxtable:after {
+  content: '';
+}
