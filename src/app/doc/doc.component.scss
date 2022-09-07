@@ -97,6 +97,7 @@ h4 {
 
 p {
   width: 100%;
+  line-height: 24px;
 }
 
 .header-link {
@@ -250,4 +251,29 @@ mat-tree-node button {
 .toc-list-item.active a {
   color: mat-color($custom-theme-accent, 600)!important;
   font-weight: 500;
+}
+
+code {
+  background-color: rgba(175, 184, 193, 0.2);
+  border-radius: 4px;
+}
+
+code.codespan {
+  padding: 2px;
+  font-size: 90%;
+}
+
+code.codeblock {
+  display: block;
+  padding: 8px;
+  border: 1px solid rgb(219, 219, 219);
+  margin: 10px 0px;
+}
+
+code.codeblock pre {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
 }

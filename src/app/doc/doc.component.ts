@@ -131,20 +131,14 @@ export class DocComponent implements OnInit, AfterViewChecked {
     };
 
     this.markdownService.renderer.codespan = (code: string) => {
-    return '<code style="padding: 2px; \
-      background-color: rgb(244, 245, 247)">' + code + '</code>';
+    return '<code class="codespan">' + code + '</code>';
     };
 
     this.markdownService.renderer.code = (code: string, language: string, isEscaped: boolean) => {
       const escapedText = code.replace(/&/g, '&amp;').replace(/</g,
         '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-      return '<code style="border-radius: 4px; display: block;\
-        padding: 8px; border: 1px solid rgb(219, 219, 219); \
-        background-color: rgb(244, 245, 247);"><pre style="white-space: \
-          pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; \
-          white-space: -o-pre-wrap; word-wrap: break-word">' +
-          escapedText  + '</pre></code>';
+      return '<code class="codeblock"><pre>' + escapedText  + '</pre></code>';
     };
 
 
