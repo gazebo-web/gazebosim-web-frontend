@@ -153,6 +153,7 @@ export class DocComponent implements OnInit, AfterViewChecked {
 
     // Get all the documentation
     this.docsInfo = this.route.snapshot.data['docsInfo'];
+    console.log(this.docsInfo);
 
     this.route.fragment.subscribe((fragment) => {
       this.fragment = fragment!;
@@ -265,18 +266,7 @@ export class DocComponent implements OnInit, AfterViewChecked {
     if (routeVersion === undefined || routeVersion === '' ||
         routeVersion === 'latest' || routeVersion === 'all') {
 
-      if (routeVersion === 'latest') {
-        this.version = {...this.docsInfo.versions[0]};
-      } else {
-        // Get the first LTS version.
-        for (let i in this.docsInfo.versions) {
-          if (this.docsInfo.versions[i].lts) {
-            this.version = {...this.docsInfo.versions[i]};
-            break;
-          }
-        }
-      }
-
+      this.version = {...this.docsInfo.versions[0]};
     } else {
       // Get the matching version version.
       for (let i in this.docsInfo.versions) {
