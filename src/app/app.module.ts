@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
@@ -32,6 +34,8 @@ import { LibsComponent } from './libs';
 import { LibsService } from './libs';
 import { MediaComponent } from './media';
 import { HomeComponent } from './home';
+import { MaritimeComponent } from './projects/maritime';
+import { OmniverseComponent } from './projects/omniverse';
 import { ShowcaseComponent } from './showcase';
 import { SupportComponent } from './support';
 import { ListedFilterPipe } from './doc/listed-filter.pipe';
@@ -48,6 +52,8 @@ import { SafePipe } from './doc/safe.pipe';
     ListedFilterPipe,
     MediaComponent,
     HomeComponent,
+    MaritimeComponent,
+    OmniverseComponent,
     ShowcaseComponent,
     SupportComponent,
     SafePipe,
@@ -71,6 +77,8 @@ import { SafePipe } from './doc/safe.pipe';
         },
       },
     }),
+    MatButtonModule,
+    MatCardModule,
     MatChipsModule,
     MatDialogModule,
     MatFormFieldModule,
