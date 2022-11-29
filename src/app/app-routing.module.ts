@@ -6,6 +6,8 @@ import { DocComponent,
 import { HomeComponent } from './home';
 import { LibComponent } from './lib';
 import { LibsComponent } from './libs';
+import { MaritimeComponent } from './projects/maritime';
+import { OmniverseComponent } from './projects/omniverse';
 import { MediaComponent } from './media';
 import { FeaturesComponent } from './features';
 import { ShowcaseComponent } from './showcase';
@@ -62,6 +64,14 @@ const routes: Routes = [
   {
     path: 'media',
     component: MediaComponent,
+  },
+  {
+    path: 'projects/maritime',
+    component: MaritimeComponent,
+  },
+  {
+    path: 'projects/omniverse',
+    component: OmniverseComponent,
   },
   {
     path: 'showcase',

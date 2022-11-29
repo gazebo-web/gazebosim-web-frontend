@@ -11,6 +11,53 @@
     <aside fxFlex="0 1 20%"></aside>
 
     <div fxLayout="column" fxLayoutAlign="center" fxFlex="1 auto">
+      <!-- Project showcase -->
+      <div class="section">
+        <h1>Projects</h1>
+
+        <div fxLayout="row" fxLayoutAlign='center' fxLayoutGap="20px">
+          <mat-card>
+            <a routerLink="/projects/maritime">
+            <img mat-card-image src='assets/images/projects/sydney_regatta.png'>
+            </a>
+            <mat-card-header>
+              <mat-card-title>Maritime simulation</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+              Learn about the available Gazebo resources that let you create
+              maritime simulations. Underwater and surface simulations are
+              possible by adding sensors and plugins to the models in your
+              world.
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <a routerLink="/projects/maritime" mat-button>Learn more</a>
+            </mat-card-actions>
+          </mat-card>
+  
+          <mat-card>
+            <a routerLink="/projects/omniverse">
+            <img mat-card-image src='assets/images/projects/omniverse.png'>
+            </a>
+            <mat-card-header>
+              <mat-card-title>Omniverse</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+              This project linked Gazebo with NVIDIA Omniverse through a <a
+                href="https://github.com/gazebosim/gz-omni">connector</a>. By
+              using this connector, Gazebo can create, remove, and position
+              models in Omniverse. Similarly, Omniverse can create and remove
+              models from Gazebo. 
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <a routerLink="/projects/omniverse" mat-button>Learn more</a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
 
       <!-- Picture showcase -->
       <div class="section">
@@ -24,41 +71,6 @@
         </div>
       </div>
 
-      <!-- Project showcase -->
-      <div class="section">
-        <h1>Projects</h1>
-
-        <div fxLayout="column" fxLayoutAlign='center'>
-          <div fxLayout="row" fxLayoutAlign='center'>
-
-            <div fxFlex="0 0 60%" fxLayout="column">
-              <h2><a href="https://github.com/gazebosim/gz-omni">Omniverse</a></h2>
-              <p>
-              This project linked Gazebo with NVIDIA Omniverse through a <a
-                href="https://github.com/gazebosim/gz-omni">connector</a>. By
-              using this connector, Gazebo can create, remove, and position
-              models in Omniverse. Similarly, Omniverse can create and remove
-              models from Gazebo. 
-              </p>
-
-              <p>NVIDIA Omniverse is an easily extensible platform for 3D
-              design collaboration and scalable multi-GPU, real-time,
-              true-to-reality simulation. Omniverse revolutionizes the way
-              we create and develop as individuals and work together as
-              teams, bringing more creative possibilities and efficiency to
-              3D creators, developers and enterprises.
-              </p>
-            </div>
-        
-            <div fxFlex="0 0 40%">
-              <a href="https://github.com/gazebosim/gz-omni">
-              <img mat-card-image src='assets/images/projects/omniverse.png'/>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </div>
 
     <aside fxFlex="0 1 20%"></aside>

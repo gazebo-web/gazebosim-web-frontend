@@ -3,6 +3,8 @@ import { Meta, Title } from '@angular/platform-browser';
 import { NgxGalleryOptions,
          NgxGalleryImage,
          NgxGalleryImageSize } from '@kolkov/ngx-gallery';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'gz-showcase',
