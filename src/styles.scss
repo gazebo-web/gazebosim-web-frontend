@@ -164,9 +164,10 @@ footer.docs {
   width: calc(100% - 280px);
 }
 
-blockquote.warning {
+.warning {
   border-left: 3px solid rgb(228, 167, 2);
-  padding-left: 12px;
+  padding: 15px;
+  margin: 15px 0;
   color: rgb(138, 108, 64);
   background: rgb(252, 248, 228);
 }
