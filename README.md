@@ -35,63 +35,13 @@
 
 ## Deployment
 
-The `staging` branch is used to deploy this website to
-https://staging.gazebosim.org. The `production` branch is used to deploy
-this website to `https://gazebosim.org`.
+The `staging` branch in this repository is used to deploy this website to
+https://staging.gazebosim.org. The `production` branch in this repository is
+used to deploy this website to `https://gazebosim.org`.
 
 Github actions will automatically deploy `staging` on push. The `production`
 branch will only deploy when an authorized user approves the deployment on
 the Github Actions UI.
-
-### Deployment to `integration` environment
-
-#### One-time setup
-
-* Install the following dependencies before using the script:
-
-    `sudo apt install python-pip`
-
-* Install AWS CLI
-
-     `pip install --upgrade --user awscli`
-
-* Add the executable path to your PATH variable: `~/.local/bin`
-
-     `export PATH=~/.local/bin:$PATH`
-
-* Enable preview stage (for cloudfront support).
-
-     `aws configure set preview.cloudfront true`
-
-* Configure your AWS credentials. Choose one of the two options:
-
-    - Option 1: For general use, use aws:
-
-        ```aws configure```
-
-    - Option 2: Set the following environment variables:
-
-        ```
-        export AWS_ACCESS_KEY_ID=AKIAI44QH8DHBEXAMPLE
-        ```
-
-        ```
-        export AWS_SECRET_ACCESS_KEY=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
-        ```
-
-* Configure the environment where you want to deploy:
-
-    `export APPLICATION_ENVIRONMENT=integration.gazebosim.org`
-
-* Configure your CloudFront distribution id:
-
-     `export CLOUDFRONT_DISTRIBUTION_ID=E2RSG343FDF43GEXAMPLE`
-
-#### Deploy to the `integration` environment
-
-Make sure that you are in your application's project directory and run:
-
-    ./deploy.sh
 
 ### Internal configuration
 
