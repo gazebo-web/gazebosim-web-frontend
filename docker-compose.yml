@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  backend:
+    image: gazebosim_web_backend
+    network_mode: "host"
+
+    volumes: 
+      - ~/ws/gz-docs:/root/gazebosim-web-backend/docs
+    ports: 
+      - "8000:8000"
+
+  frontend:
+    image: gazebosim_web_frontend
+    network_mode: "host"
+    volumes: 
+      - .:/root/app
+    ports: 
+      - "3000:3000"
+
