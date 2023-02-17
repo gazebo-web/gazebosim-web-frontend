@@ -19,7 +19,6 @@ import { MatTreeModule } from '@angular/material/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
-import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,7 +53,6 @@ import { SafePipe } from './doc/safe.pipe';
     HomeComponent,
     MaritimeComponent,
     OmniverseComponent,
-    ShowcaseComponent,
     SupportComponent,
     SafePipe,
   ],
@@ -90,7 +88,7 @@ import { SafePipe } from './doc/safe.pipe';
     MatTreeModule,
     MatSelectModule,
     MatSnackBarModule,
-    NgxGalleryModule,
+    ShowcaseComponent,
   ],
   providers: [
     DocsResolver,

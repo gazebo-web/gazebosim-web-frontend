@@ -22,17 +22,9 @@
   height: 100%;
 }
 
-ngx-gallery ::ng-deep .ngx-gallery-arrow {
-  color: #000000;
-}
-
-ngx-gallery ::ng-deep .ngx-gallery-thumbnail {
-  border: 0px!important;
-}
-
-ngx-gallery ::ng-deep .ngx-gallery-thumbnail.ngx-gallery-active {
-  background-color: mat-color($custom-theme-primary, 100);
-  border-bottom: 2px solid mat-color($custom-theme-primary, 600);
+.custom-colors {
+  --swiper-navigation-color: #000;
+  --swiper-pagination-color: #000;
 }
 
 .section {

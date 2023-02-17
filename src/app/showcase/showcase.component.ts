@@ -1,32 +1,68 @@
-import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
-import { NgxGalleryOptions,
-         NgxGalleryImage,
-         NgxGalleryImageSize } from '@kolkov/ngx-gallery';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CommonModule } from '@angular/common';
+import { Meta, SafeUrl, Title } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { SwiperModule } from 'swiper/angular';
 
+import SwiperCore, {FreeMode, Navigation, Thumbs, SwiperOptions} from 'swiper';
+SwiperCore.use([FreeMode, Navigation, Thumbs]);
+
+/**
+ * The Showcase Component encapsulates Swiper.
+ * Receives the gallery images as an input.
+ */
 @Component({
   selector: 'gz-showcase',
+  standalone: true,
   templateUrl: 'showcase.component.html',
-  styleUrls: ['showcase.component.scss']
+  styleUrls: ['showcase.component.scss', './swiper.scss'],
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    SwiperModule,
+    MatCardModule,
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class ShowcaseComponent implements OnInit {
 
   /**
-   * The gallery options. Determines the behavior of the gallery component.
-   *
-   * See https://github.com/lukasz-galka/ngx-gallery#ngxgalleryoptions for more details.
+   * A reference to the thumbnail slider, to be used by the main slider.
+   * It is changed by events in the thumbnail slider.
    */
-  public galleryOptions: NgxGalleryOptions[] = [];
+  public thumbsSwiper: SwiperCore;
+
+  /**
+   * Configuration of the main slider.
+   */
+  public mainConfig: SwiperOptions = {
+    spaceBetween: 0,
+    navigation: true,
+  };
+
+  /**
+   * Configuration of the thumbnails slider.
+   */
+  public thumbsConfig: SwiperOptions = {
+    spaceBetween: 10,
+    freeMode: true,
+  };
 
   /**
    * The images to be displayed in the gallery.
-   *
-   * See https://github.com/lukasz-galka/ngx-gallery#ngxgalleryimage for more details.
    */
-  public galleryImages: NgxGalleryImage[] = [];
+  public galleryImages: SafeUrl[] = [
+    'assets/images/gallery/gallery_0.png',
+    'assets/images/gallery/gallery_1.png',
+    'assets/images/gallery/gallery_2.png',
+    'assets/images/gallery/gallery_3.png',
+    'assets/images/gallery/gallery_4.png',
+    'assets/images/gallery/gallery_5.png',
+    'assets/images/gallery/gallery_6.png',
+  ];
 
   constructor(private titleService: Title, private meta: Meta) {
   }
@@ -37,47 +73,6 @@ export class ShowcaseComponent implements OnInit {
     this.meta.updateTag({name: 'description',
       content: 'Gazebo highlights and media'});
 
-    this.galleryOptions = [{
-      imageSize: NgxGalleryImageSize.Contain,
-      thumbnailSize: NgxGalleryImageSize.Contain,
-      width: '100%',
-      height: '100%',
-      thumbnailsColumns: 5,
-      thumbnailsPercent: 15,
-      preview: false,
-      imageAutoPlay: false,
-      imageAutoPlayInterval: 3000
-    }];
-
-    this.galleryImages = [
-      {
-        medium: 'assets/images/gallery/gallery_0.png',
-        small: 'assets/images/gallery/gallery_0.png',
-      },
-      {
-        medium: 'assets/images/gallery/gallery_1.png',
-        small: 'assets/images/gallery/gallery_1.png',
-      },
-      {
-        medium: 'assets/images/gallery/gallery_2.png',
-        small: 'assets/images/gallery/gallery_2.png',
-      },
-      {
-        medium: 'assets/images/gallery/gallery_3.png',
-        small: 'assets/images/gallery/gallery_3.png',
-      },
-      {
-        medium: 'assets/images/gallery/gallery_4.png',
-        small: 'assets/images/gallery/gallery_4.png',
-      },
-      {
-        medium: 'assets/images/gallery/gallery_5.png',
-        small: 'assets/images/gallery/gallery_5.png',
-      },
-      {
-        medium: 'assets/images/gallery/gallery_6.png',
-        small: 'assets/images/gallery/gallery_6.png',
-      },
-    ];
+   this.thumbsConfig.slidesPerView = this.galleryImages.length;
   }
 }
