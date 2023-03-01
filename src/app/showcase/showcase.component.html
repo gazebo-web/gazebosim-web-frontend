@@ -63,9 +63,26 @@
       <div class="section">
         <h1>Gallery</h1>
           <div class="gallery-container-outer">
-            <div class="gallery-container-inner" fxLayoutAlign="center center">
-              <ngx-gallery [options]="galleryOptions" [images]="galleryImages">
-              </ngx-gallery>
+            <div class="gallery-container-inner" fxLayout="column" fxLayoutAlign="center center">
+
+              <swiper *ngIf="galleryImages.length > 0"
+                      [config]="mainConfig"
+                      [thumbs]="{ swiper: thumbsSwiper }"
+                      class="mainSwiper custom-colors">
+                <ng-template *ngFor="let img of galleryImages" swiperSlide>
+                  <img [src]="img"/>
+                </ng-template>
+              </swiper>
+              
+              <swiper *ngIf="galleryImages.length > 1"
+                      (swiper)="thumbsSwiper = $event"
+                      [config]="thumbsConfig"
+                      [watchSlidesProgress]="true"
+                      class="thumbSwiper">
+                <ng-template *ngFor="let img of galleryImages" swiperSlide>
+                  <img [src]="img"/>
+                </ng-template>
+              </swiper>
 
             </div>
         </div>
