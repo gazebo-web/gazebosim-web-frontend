@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   APP_HOST: "https://app.gazebosim.org",
-  API_HOST: 'https://api.gazebosim.org',
+  API_HOST: 'http://localhost:8000',
   API_VERSION: '1.0',
   GA_TRACKING_ID: ''
 };
