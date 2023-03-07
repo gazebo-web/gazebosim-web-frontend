@@ -76,3 +76,31 @@ You can access the generated docs in `./doc/index.html`.
 ## Naming conventions
 
 Following the [Angular Style Guide](https://angular.io/guide/styleguide), we use the `gz` preffix for the selector of our Components and Directives.
+
+
+## Docker Development
+
+1. Build the frontend docker image
+
+```
+docker build . -t gazebosim_web_frontend
+```
+
+2. Build the backend docker image
+
+```
+cd path/to/gazebosim-web-backend
+docker build . -t gazebosim_web_backend
+```
+
+3. From the gazebosim-web-frontend directory
+
+```
+docker-compose up
+```
+
+> **Note:**
+> Make sure to stop any docker containers that are using ports 3000 and
+> 8000 before running `docker-compose`. Also, make sure to use underscores, not
+> dashes, when creating the `gazebosim_web_frontend` and `gazebosim_web_backend`
+> images since the docker-compose file expects those names
