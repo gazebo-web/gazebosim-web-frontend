@@ -7,6 +7,7 @@ import { HomeComponent } from './home';
 import { LibComponent } from './lib';
 import { LibsComponent } from './libs';
 import { MaritimeComponent } from './projects/maritime';
+import { NotFoundComponent } from './not-found';
 import { OmniverseComponent } from './projects/omniverse';
 import { MediaComponent } from './media';
 import { FeaturesComponent } from './features';
@@ -68,6 +69,10 @@ const routes: Routes = [
   {
     path: 'projects/maritime',
     component: MaritimeComponent,
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent,
   },
   {
     path: 'projects/omniverse',
