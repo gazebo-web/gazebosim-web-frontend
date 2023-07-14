@@ -258,7 +258,7 @@ export class DocComponent implements OnInit, AfterViewChecked {
   }
 
   public onVersionChange(newVersion: string): void {
-    this.router.navigate(['/docs', newVersion]);
+    this.router.navigate(['/docs', newVersion, this.page.name]);
   }
 
 
