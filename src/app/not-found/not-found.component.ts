@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
+@Component({
+  selector: 'gz-not-found',
+  templateUrl: 'not-found.component.html',
+})
+
 /**
  * NotFound Component contains the landing page.
  */
