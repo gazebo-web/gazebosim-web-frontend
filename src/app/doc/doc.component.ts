@@ -161,7 +161,11 @@ export class DocComponent implements OnInit, AfterViewChecked {
 
     this.route.params.subscribe((params) => {
       // Update the version
-      this.updateVersion(params['version']);
+      // If version not found, go to error page
+      if (!this.updateVersion(params['version'])) {
+        this.router.navigate(['/not-found']);
+        return true;
+      }
 
       this.pageName = params['page'];
 
@@ -262,21 +266,22 @@ export class DocComponent implements OnInit, AfterViewChecked {
   }
 
 
-  private updateVersion(routeVersion: string): void {
+  // Return true if found a matching version. False if error.
+  private updateVersion(routeVersion: string): boolean {
     if (routeVersion === undefined || routeVersion === '' ||
         routeVersion === 'latest' || routeVersion === 'all') {
-
       this.version = {...this.docsInfo.versions[0]};
+      return true;
     } else {
       // Get the matching version.
       for (let i in this.docsInfo.versions) {
         if (this.docsInfo.versions[i].name === routeVersion) {
           this.version = {...this.docsInfo.versions[i]};
-          return;
+          return true;
         }
       }
-      // Default behavior will get the most recent version.
-      this.version = {...this.docsInfo.versions[0]};
+      // Default behavior. If cannot find a match, go to an error page
+      return false;
     }
   }
 
