@@ -87,8 +87,9 @@ const routes: Routes = [
     component: SupportComponent,
   },
   {
+    // Bad URLs go to not-found page
     path: '**',
-    component: HomeComponent,
+    component: NotFoundComponent,
   }
 ];
 
