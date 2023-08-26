@@ -28,12 +28,13 @@ import { DocComponent,
 import { DocService } from './doc/doc.service';
 import { ErrorInterceptor } from './error-interceptor';
 import { FeaturesComponent } from './features';
+import { HomeComponent } from './home';
 import { LibComponent } from './lib';
 import { LibsComponent } from './libs';
 import { LibsService } from './libs';
 import { MediaComponent } from './media';
-import { HomeComponent } from './home';
 import { MaritimeComponent } from './projects/maritime';
+import { NotFoundComponent } from './not-found';
 import { OmniverseComponent } from './projects/omniverse';
 import { ShowcaseComponent } from './showcase';
 import { SupportComponent } from './support';
@@ -52,6 +53,7 @@ import { SafePipe } from './doc/safe.pipe';
     MediaComponent,
     HomeComponent,
     MaritimeComponent,
+    NotFoundComponent,
     OmniverseComponent,
     SupportComponent,
     SafePipe,

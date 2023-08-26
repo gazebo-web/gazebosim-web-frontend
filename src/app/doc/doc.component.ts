@@ -1,4 +1,4 @@
-import {  AfterViewChecked, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewChecked, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,8 +9,8 @@ import { Version } from './version';
 import { LibsService } from '../libs/libs.service';
 import { environment } from '../../environments/environment';
 import { MarkdownService } from 'ngx-markdown';
-import {FlatTreeControl} from '@angular/cdk/tree';
-import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 
 // Defines a node on the page tree structure.
 interface PageFlatNode {
@@ -268,7 +268,7 @@ export class DocComponent implements OnInit, AfterViewChecked {
 
       this.version = {...this.docsInfo.versions[0]};
     } else {
-      // Get the matching version version.
+      // Get the matching version.
       for (let i in this.docsInfo.versions) {
         if (this.docsInfo.versions[i].name === routeVersion) {
           this.version = {...this.docsInfo.versions[i]};
