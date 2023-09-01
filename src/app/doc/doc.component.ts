@@ -140,8 +140,6 @@ export class DocComponent implements OnInit, AfterViewChecked {
 
       return '<code class="codeblock"><pre>' + escapedText  + '</pre></code>';
     };
-
-
   }
 
   public ngOnInit(): void {
@@ -265,7 +263,6 @@ export class DocComponent implements OnInit, AfterViewChecked {
     this.router.navigate(['/docs', newVersion, this.page.name]);
   }
 
-
   // Return true if found a matching version. False if error.
   private updateVersion(routeVersion: string): boolean {
     if (routeVersion === undefined || routeVersion === '' ||
@@ -298,8 +295,8 @@ export class DocComponent implements OnInit, AfterViewChecked {
       for (let pageIndex in this.docsInfo.pages[refName]) {
 
         this.docsInfo.pages[refName][pageIndex].link = '/docs/' +
-        this.version.name + '/' +
-        this.docsInfo.pages[refName][pageIndex].name;
+          this.version.name + '/' +
+          this.docsInfo.pages[refName][pageIndex].name;
         this.docsInfo.pages[refName][pageIndex].version = refName;
 
         // Update child pages.
