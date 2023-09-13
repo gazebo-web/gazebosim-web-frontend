@@ -13,9 +13,9 @@
         git clone https://github.com/gazebo-web/gazebosim-web-frontend
         cd web
 
-1. This repository comes with an example `setup.bash` file which works with the
+1. Add a `setup.bash` file which works with the
    API at https://staging-api.gazebosim.org. Edit that file with
-   your own Auth0 and backend information. Always remember to source this file
+   your own Auth0 and backend information i.e. the environment variables set while [installing the backend](https://github.com/gazebo-web/gazebosim-web-backend#install). Always remember to source this file
    before serving:
 
        . setup.bash
@@ -98,9 +98,10 @@ docker build . -t gazebosim_web_backend
 ```
 docker-compose up
 ```
-
 > **Note:**
 > Make sure to stop any docker containers that are using ports 3000 and
 > 8000 before running `docker-compose`. Also, make sure to use underscores, not
 > dashes, when creating the `gazebosim_web_frontend` and `gazebosim_web_backend`
 > images since the docker-compose file expects those names
+
+If you're using the docker setup for local development and testing, update the `gz-docs` path to your local `docs` directory in [`docker-compose.yml`](https://github.com/gazebo-web/gazebosim-web-frontend/blob/docker_dev/docker-compose.yml#L7) before running the command.
