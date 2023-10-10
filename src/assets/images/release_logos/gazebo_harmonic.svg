@@ -4,10 +4,11 @@
 <svg
    version="1.1"
    id="svg1"
-   width="2505.9067"
-   height="3029.0667"
-   viewBox="0 0 2505.9067 3029.0667"
-   sodipodi:docname="Gazebo_Final.pdf"
+   width="2379.9932"
+   height="2906.2373"
+   viewBox="0 0 2379.9931 2906.2374"
+   sodipodi:docname="gazebo_harmonic.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -2567,11 +2568,22 @@
      inkscape:showpageshadow="2"
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1" />
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.33904833"
+     inkscape:cx="2144.2371"
+     inkscape:cy="1852.2433"
+     inkscape:window-width="2560"
+     inkscape:window-height="1275"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer-MC0" />
   <g
      id="layer-MC0"
      inkscape:groupmode="layer"
-     inkscape:label="artwork">
+     inkscape:label="artwork"
+     transform="translate(-62.806665,-57.669441)">
     <path
        id="path1"
        d="M 1832.1,48.87 H 47.105 V 2228.548 H 1832.1 Z"
