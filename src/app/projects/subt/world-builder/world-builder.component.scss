@@ -1,0 +1,59 @@
+@import './loader.scss';
+
+$firaEC: 'Fira Sans Extra Condensed', sans-serif;
+$orange: #E57300;
+$white: #FFFFFF;
+$background: #231F20;
+$shadow: 1px 1px 5px rgba(0,0,0,.25); // for text shadow; increases legibility of text on top of background image
+
+.container {
+  position: absolute;
+  background: $background;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.loading {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  font-family: $firaEC;
+  text-shadow: $shadow;
+
+  .lds-spinner {
+    transform: scale(2);
+    align-self: center;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 60px;
+    margin-bottom: 0;
+    color: $orange;
+  }
+
+  h2 {
+      font-size: 42px;
+      line-height: 38px;
+      margin: 0;
+      color: $white;
+  }
+}
+
+canvas {
+  position: absolute;
+}
+
+.fill-canvas {
+  width: 100%;
+  height: 100%;
+  background: $background;
+}

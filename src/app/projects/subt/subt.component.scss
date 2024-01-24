@@ -1,0 +1,7 @@
+@import '../../../styles.scss';
+.section h1 {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 24px;
+  color: mat-color($custom-theme-primary, 400);
+}
