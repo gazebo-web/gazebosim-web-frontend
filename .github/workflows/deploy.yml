@@ -3,7 +3,7 @@ name: deploy
 # Controls when the workflow will run
 on:
   push:
-    branches: [ staging, production, Crola1702/oidc-deploy ]
+    branches: [ staging, production ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -13,7 +13,7 @@ env:
 
 jobs:
   staging-deploy:
-    if: github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/Crola1702/oidc-deploy'
+    if: github.ref == 'refs/heads/staging'
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     environment: staging
