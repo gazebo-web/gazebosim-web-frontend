@@ -52,7 +52,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: "us-east-1"
-          role-to-assume: arn:aws:iam::200670743174:role/github-oidc-deployment-gz-web-app
+          role-to-assume: arn:aws:iam::200670743174:role/github-oidc-deployment-gz-web-app-staging
 
       - name: Upload package to S3 bucket
         run: aws s3 sync dist s3://${{ secrets.S3_BUCKET }}
