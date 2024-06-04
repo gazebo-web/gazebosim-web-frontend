@@ -51,7 +51,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-region: "us-east-1"
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
           role-to-assume: arn:aws:iam::200670743174:role/github-oidc-deployment-gz-web-app-staging
 
       - name: Upload package to S3 bucket
