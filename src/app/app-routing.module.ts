@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about';
-import { DocComponent,
-         DocsResolver } from './doc';
 import { HomeComponent } from './home';
-import { LibComponent } from './lib';
-import { LibsComponent } from './libs';
 import { MaritimeComponent } from './projects/maritime';
 import { NotFoundComponent } from './not-found';
 import { OmniverseComponent } from './projects/omniverse';
@@ -25,42 +21,12 @@ const routes: Routes = [
     component: AboutComponent,
   },
   {
-    path: 'docs',
-    component: DocComponent,
-    resolve: {
-      docsInfo: DocsResolver
-    }
-  },
-  {
-    path: 'docs/:version',
-    component: DocComponent,
-    resolve: {
-      docsInfo: DocsResolver
-    }
-  },
-  {
-    // Gets the page associated with a specific version
-    path: 'docs/:version/:page',
-    component: DocComponent,
-    resolve: {
-      docsInfo: DocsResolver
-    }
-  },
-  {
     path: 'features',
     component: FeaturesComponent,
   },
   {
     path: 'home',
     component: HomeComponent,
-  },
-  {
-    path: 'libs',
-    component: LibsComponent,
-  },
-  {
-    path: 'libs/:lib',
-    component: LibComponent,
   },
   {
     path: 'media',
