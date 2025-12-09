@@ -16,10 +16,12 @@
         <h1>Projects</h1>
 
         <div fxLayout="row" fxLayoutAlign='center' fxLayoutGap="20px">
-          <mat-card>
-            <a routerLink="/projects/maritime">
-            <img mat-card-image src='assets/images/projects/sydney_regatta.png'>
-            </a>
+          <mat-card fxLayout="column">
+            <div fxFlex="1 auto">
+              <a routerLink='/projects/maritime'>
+                <img mat-card-image src='assets/images/projects/sydney_regatta.png'>
+              </a>
+            </div>
             <mat-card-header>
               <mat-card-title>Maritime simulation</mat-card-title>
             </mat-card-header>
@@ -36,10 +38,12 @@
             </mat-card-actions>
           </mat-card>
   
-          <mat-card>
-            <a routerLink="/projects/omniverse">
-            <img mat-card-image src='assets/images/projects/omniverse.png'>
-            </a>
+          <mat-card fxLayout="column">
+            <div fxFlex="1 auto">
+              <a routerLink="/projects/omniverse">
+                <img mat-card-image src='assets/images/projects/omniverse.png'>
+              </a>
+            </div>
             <mat-card-header>
               <mat-card-title>Omniverse</mat-card-title>
             </mat-card-header>

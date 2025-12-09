@@ -5,6 +5,7 @@ import { Meta, SafeUrl, Title } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { SwiperModule } from 'swiper/angular';
+import { RouterModule } from '@angular/router';
 
 import SwiperCore, {FreeMode, Navigation, Thumbs, SwiperOptions} from 'swiper';
 SwiperCore.use([FreeMode, Navigation, Thumbs]);
@@ -22,6 +23,7 @@ SwiperCore.use([FreeMode, Navigation, Thumbs]);
     CommonModule,
     FlexLayoutModule,
     SwiperModule,
+    RouterModule,
     MatCardModule,
   ],
   encapsulation: ViewEncapsulation.None
